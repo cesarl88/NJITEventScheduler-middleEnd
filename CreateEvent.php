@@ -1,4 +1,7 @@
 <?php
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);
+	
 	
 	#include_once('login.php');
 	
@@ -14,7 +17,7 @@
 																						"startTime" 	=> $startTime, 		
 																						"endTime"		=> $endTime,		
 																						"Place"			=> $Place,			
-																						"Submiter"		=> $Submiter,		
+																						"Submitter"		=> $Submitter,		
 																						"eventname"		=> $eventname,		
 																						"Organization"	=> $Organization,
 																						"image"			=> $image,			
@@ -27,10 +30,10 @@
 		$CreateEventResult = curl_exec($ch);
 		curl_close($ch);
 		//echo "<br/>";
-		$value = (json_decode($CreateEventResult,true));
+		#$value = (json_decode($CreateEventResult,true));
 		
 		#pending
-		return $value;	#review reply from DB
+		return $CreateEventResult;	#review reply from DB
 		
 	}
 
@@ -44,7 +47,7 @@
 	$startTime   	= $_POST['startTime'];
 	$endTime     	= $_POST['endTime'];
 	$Place       	= $_POST['Place'];
-	$Submiter    	= $_POST['Submiter'];
+	$Submitter    	= $_POST['Submitter'];
 	$eventname   	= $_POST['eventname'];
 	$Organization	= $_POST['Organization'];
 	$image       	= $_POST['image'];
@@ -56,6 +59,13 @@
 	
 	#Function call
 	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submiter,$eventname,$Organization,$image,$link,$description,$Approved,$UserID);
-	print_r(json_encode( $result ,true));
-
+	print_r($result);
+	
+	
+	#			#EventID 	
+	#			#-1 in case of failure
+	#			#-2 in case of an exception
+	
 ?>
+
+

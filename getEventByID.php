@@ -1,4 +1,7 @@
 <?php
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);
+	
 	
 	#include_once('login.php');
 	
@@ -11,11 +14,11 @@
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
-		//echo "<br/>";
-		$value = (json_decode($getEventReply,true));
+		#echo "<br/>";
+		#$value = (json_decode($getEventReply,true));
 		
 		
-		return $value;	#review reply from DB	
+		return $getEventReply;	#review reply from DB	
 	}
 
 	
@@ -26,6 +29,6 @@
 	
 	#Function call
 	$result = getEventByID($ID);
-	print_r(json_encode( $result ,true));
+	print_r( $result);
 
 ?>

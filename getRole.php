@@ -1,4 +1,7 @@
 <?php
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);
+	
 	
 	#include_once('fileName.php');
 	
@@ -15,7 +18,7 @@
 		$value = (json_decode($getRoleReply,true));
 		
 		#pending
-		return $value['UserID'];	#review reply from DB
+		return $value;
 	}
 	
 	#getRole
@@ -26,5 +29,9 @@
 	
 	#Confirm if appplicable 
 	print_r(json_encode( $result ,true));
+	
+	#{"Role":"1"}		#Admin
+	#{"Role":"2"}		#User
+	#{"Roles":"-1"}	#NonAuthenticated
 
 ?>
