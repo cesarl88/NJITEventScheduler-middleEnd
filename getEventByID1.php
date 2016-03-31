@@ -19,7 +19,7 @@
   
  
  $value = json_decode($replyFromDB2, true); /* Using json to decode the response in a form of array */
- #var_dump($value);
+ var_dump($value);
 
 echo "<table border='1' >
   			<tr>
