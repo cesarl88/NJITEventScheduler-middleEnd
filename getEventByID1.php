@@ -19,12 +19,12 @@
 	echo <br/>;
 	
   
-	$replyFromDB3 = json_decode($replyFromDB2, true);
-	echo $replyFromDB2;
-	echo <br/>;
+	// $replyFromDB3 = json_decode($replyFromDB2, true);
+	// echo $replyFromDB2;
+	// echo <br/>;
 	
  
-	$value = json_decode($replyFromDB3, true); /* Using json to decode the response in a form of array */
+	$value = json_decode($replyFromDB2, true); /* Using json to decode the response in a form of array */
 	var_dump($value);
 
  
