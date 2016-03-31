@@ -44,8 +44,8 @@ echo "<table border='1' >
  	$temp = json_decode($item,true);
  	var_dump($temp);
  	echo "<tr>";
-  	echo "<td>".$temp['eventname']."</td>";
- 	echo "<td>".$temp['title']."</td>";
+  	echo "<td>".$temp['EventName']."</td>";
+ 	echo "<td>".$temp['Title']."</td>";
  	echo "<td>".$temp['startDate']."</td>";
  	echo "<td>".date('h:i:s a', strtotime($temp['startTime']))."</td>";
  	echo "<td>".$temp['EndDate']."</td>";
