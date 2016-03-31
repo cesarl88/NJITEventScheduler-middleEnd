@@ -23,6 +23,10 @@
 	echo '<br/>';
 	var_dump($value);
 	echo '<br/>';
+	$value = json_decode($value, true);
+	var_dump($value);
+ 
+ 
  
 echo "<table border='1' >
   			<tr>
