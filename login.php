@@ -65,7 +65,7 @@
 	if($result['UserID'] == -1){
 		session_unset();
 	}
-	elseif($result['UserID'] != 1 ){
+	elseif($result['UserID'] != -1 ){
 		$_SESSION["UserID"] = $result['UserID'];
 		print_r($_SESSION);
 	}
