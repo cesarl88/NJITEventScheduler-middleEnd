@@ -22,9 +22,9 @@
 	$value = $replyFromDB2; /* Using json to decode the response in a form of array */
 	echo '<br/>';
 	var_dump($value);
-	echo '<br/>';
-	$value = json_decode($value, true);
-	var_dump($value);
+	#echo '<br/>';
+	#$value = json_decode($value, true);
+	#var_dump($value);
  
  
  
@@ -42,7 +42,7 @@ echo "<table border='1' >
  foreach($value['Event'] as $item)
  {
  	$temp = json_decode($item,true);
- 	var_dump($temp);
+ 	#var_dump($temp);
  	echo "<tr>";
   	echo "<td>".$temp['EventName']."</td>";
  	echo "<td>".$temp['Title']."</td>";
