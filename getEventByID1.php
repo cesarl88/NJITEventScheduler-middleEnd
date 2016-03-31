@@ -13,13 +13,19 @@
  
 	$replyFromDB2 = curl_exec($ch); /* set variable to store response */
  
-  #echo $replyFromDB2;
- 
-	curl_close($ch);
   
- $replyFromDB3 = json_decode($replyFromDB2, true);
- $value = json_decode($replyFromDB3, true); /* Using json to decode the response in a form of array */
- #var_dump($value);
+	curl_close($ch);
+   echo $replyFromDB2;
+	echo <br/>;
+	
+  
+	$replyFromDB3 = json_decode($replyFromDB2, true);
+	echo $replyFromDB2;
+	echo <br/>;
+	
+ 
+	$value = json_decode($replyFromDB3, true); /* Using json to decode the response in a form of array */
+	var_dump($value);
 
  
 echo "<table border='1' >
