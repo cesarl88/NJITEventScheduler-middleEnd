@@ -67,7 +67,7 @@
 	}
 	elseif($result['UserID'] != -1 ){
 		$_SESSION["UserID"] = $result['UserID'];
-		print_r($_SESSION);
+		#print_r($_SESSION);
 	}
 	
 	
