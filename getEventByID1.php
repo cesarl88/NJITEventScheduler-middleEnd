@@ -43,6 +43,7 @@ echo "<table border='1' >
  {
  	$temp = json_decode($item,true);
  	#var_dump($temp);
+	echo $temp['Event'];
  	echo "<tr>";
   	echo "<td>".$temp['EventName']."</td>";
  	echo "<td>".$temp['Title']."</td>";
