@@ -13,14 +13,15 @@
  
 	$replyFromDB2 = curl_exec($ch); /* set variable to store response */
  
-  echo $replyFromDB2;
+  #echo $replyFromDB2;
  
 	curl_close($ch);
   
- 
- $value = json_decode($replyFromDB2, true); /* Using json to decode the response in a form of array */
- var_dump($value);
+ $replyFromDB3 = json_decode($replyFromDB2, true);
+ $value = json_decode($replyFromDB3, true); /* Using json to decode the response in a form of array */
+ #var_dump($value);
 
+ 
 echo "<table border='1' >
   			<tr>
          <td><b>Event Name</b></td>
@@ -31,7 +32,6 @@ echo "<table border='1' >
 		    <td><b>End Time</b></td>
   
 			</tr>";
- 
  foreach($value['Event'] as $item)
  {
  	$temp = json_decode($item,true);
