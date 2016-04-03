@@ -19,7 +19,7 @@
 	
 	
 	#Function call
-	#$result = getUserName($UserID);
-	#print_r($result);
+	$result = getUserName($UserID);
+	print_r($result);
 
 ?>
