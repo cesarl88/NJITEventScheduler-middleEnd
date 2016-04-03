@@ -9,7 +9,7 @@
 	#Function Definition
 	#Create event 
 	#Approved (TRUE or FALSE) , UserID (integer)
-	function CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submiter,$eventname,$Organization,$image,$link,$description,$UserID ){
+	function CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID ){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/CreateEvent.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array("title" 			=> $title, 			
@@ -56,10 +56,14 @@
 	$description 	= $_POST['description'];
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
+	
+	
 	$Submitter    	= getUserName($UserID);
+	echo $Submitter;
+	
 	
 	#Function call
-	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submiter,$eventname,$Organization,$image,$link,$description,$UserID);
+	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
 	print_r($result);
 	
 	
