@@ -67,17 +67,17 @@
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
+	#Execute getUserName and assign it to Submitter
 	$result = getUserName($UserID);
-	print_r($result);
-	
+	#print_r($result);
 	$result = json_decode($result,true);
 	$Submitter = $result['UserName'];
-	var_dump($Submitter);
+	#var_dump($Submitter);
 	
 	
 	#Function call
-	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
-	#print_r($result);
+	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
+	print_r($result);
 	
 	
 	#			#EventID 	
