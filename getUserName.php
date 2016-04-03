@@ -15,7 +15,7 @@
 	}
 	
 	
-	#$UserID = $_POST['UserID'];
+	$UserID = $_POST['UserID'];
 	
 	
 	#Function call
