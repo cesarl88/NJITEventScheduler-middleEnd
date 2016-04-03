@@ -66,10 +66,10 @@
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
-	$SubmitterArray    	= json_decode(getUserName($UserID),true);
+	$SubmitterArray    	= getUserName($UserID);
 	print_r($SubmitterArray);
 	
-	$Submitter = $SubmitterArray['UserName'];
+	$Submitter = json_decode($SubmitterArray,true);
 	print_r($Submitter);
 	
 		
