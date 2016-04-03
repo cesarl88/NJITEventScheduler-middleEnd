@@ -15,11 +15,11 @@
 	}
 	
 	
-	#$UserID = $_POST['UserID'];
+	$UserID = $_POST['UserID'];
 	
 	
 	#Function call
-	#$result = getUserName($UserID);
-	#print_r($result);
+	$result = getUserName($UserID);
+	print_r($result);
 
 ?>
