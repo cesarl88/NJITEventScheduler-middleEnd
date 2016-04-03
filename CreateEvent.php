@@ -42,11 +42,11 @@
 	
 	
 	#Variables to use for CreateEvent
-	$title		 	= $_POST['title'];			
+	$title		 	= $_POST['title'];				#Mandatory from DB
 	$startDate   	= $_POST['startDate'];
 	$EndDate     	= $_POST['EndDate'];
-	$startTime   	= $_POST['startTime'];
-	$endTime     	= $_POST['endTime'];
+	$startTime   	= $_POST['startTime'];			#Mandatory from DB
+	$endTime     	= $_POST['endTime'];				#Mandatory from DB
 	$Place       	= $_POST['Place'];
 	#$Submitter    	= $_POST['Submitter'];
 	$eventname   	= $_POST['eventname'];
@@ -58,8 +58,22 @@
 	$UserID      	= $_POST['UserID'];
 	
 	
-	$Submitter    	= getUserName($UserID);
-	echo $Submitter;
+	$possibleSubmitter    	= getUserName($UserID);
+	
+	if ($possibleSubmitter){
+		echo "This is not possible";	
+		var_dump($possibleSubmitter);
+	}
+	else {
+		echo "This is possible";
+		var_dump($possibleSubmitter);
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	#Function call
