@@ -4,6 +4,7 @@
 	
 	
 	#include_once('login.php');
+	#Function Definition
 	function getUserName($UserID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/getUserName.php"); 
@@ -66,10 +67,10 @@
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
-	$SubmitterArray = getUserName($UserID);
-	var_dump($SubmitterArray);
+	$result = getUserName($UserID);
+	print_r($result);
 	
-	$Submitter = json_decode($SubmitterArray,true);
+	$Submitter = json_decode($result,true);
 	var_dump($Submitter);
 	
 	
