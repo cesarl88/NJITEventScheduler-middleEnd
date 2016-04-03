@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);
 	
 	
 	#include_once('login.php');
@@ -67,17 +67,10 @@
 	$UserID      	= $_POST['UserID'];
 	
 	$SubmitterArray = getUserName($UserID);
-	print_r($SubmitterArray);
+	var_dump($SubmitterArray);
 	
 	$Submitter = json_decode($SubmitterArray,true);
-	print_r($Submitter);
-	
-		
-	
-	
-	
-	
-	
+	var_dump($Submitter);
 	
 	
 	#Function call
