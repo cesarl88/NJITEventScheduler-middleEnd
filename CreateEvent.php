@@ -1,6 +1,6 @@
 <?php
-	#ini_set('display_errors', 'On');
-	#error_reporting(E_ALL);
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
 	
 	
 	#include_once('login.php');
@@ -77,8 +77,8 @@
 	
 	
 	#Function call
-	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
-	print_r($result);
+	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
+	#print_r($result);
 	
 	
 	#			#EventID 	
