@@ -46,6 +46,19 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	
 	$startDate 	= $startDate.'T'.$startTime.'-04:00';
 	var_dump($startDate);
+	echo "<br/>";
+	
+	$startDate1 = $startDate.' '.$startTime;
+	$startDate2 = startDate1;
+	
+	$startDate2->format(\DateTime::RFC3339);
+	var_dump($startDate2);
+	echo "<br/>";
+	
+	
+	$startDate1 = date("c", strtotime($startDate1));
+	var_dump($startDate1);
+	echo "<br/>";
 	
 	
 	#Format End date with form '2015-05-28T17:00:00-04:00'
@@ -53,6 +66,10 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	var_dump($EndDate);
 	
 	
+	
+	#call function
+	#$result = addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDate);
+	#print_r( $result);
 	
 	
 	
