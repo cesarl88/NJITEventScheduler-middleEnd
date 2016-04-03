@@ -81,8 +81,8 @@
 	
 	
 	#Function call
-	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
-	print_r($result);
+	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
+	#print_r($result);
 	
 	
 	#			#EventID 	
