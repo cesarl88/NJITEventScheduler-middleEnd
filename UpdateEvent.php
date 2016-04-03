@@ -76,6 +76,6 @@
 	
 	#Function call
 	$result = UpdateEvent();
-	print_r(json_encode( $result ,true));
+	print_r( $result);
 
 ?>
