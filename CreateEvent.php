@@ -59,7 +59,7 @@
 	
 	
 	$possibleSubmitter    	= getUserName($UserID);
-	print_r($possibleSubmitter);
+	var_dump($possibleSubmitter);
 	
 	if ($possibleSubmitter){
 		echo "This is not possible";	
