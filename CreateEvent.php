@@ -70,7 +70,8 @@
 	$result = getUserName($UserID);
 	print_r($result);
 	
-	$Submitter = json_decode($result,true);
+	$result = json_decode($result,true);
+	$Submitter = $result['UserName'];
 	var_dump($Submitter);
 	
 	
