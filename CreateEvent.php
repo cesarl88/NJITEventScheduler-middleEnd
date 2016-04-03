@@ -4,6 +4,7 @@
 	
 	
 	#include_once('login.php');
+	include_once('getUserName.php');
 	
 	#Function Definition
 	#Create event 
@@ -47,7 +48,7 @@
 	$startTime   	= $_POST['startTime'];
 	$endTime     	= $_POST['endTime'];
 	$Place       	= $_POST['Place'];
-	$Submitter    	= $_POST['Submitter'];
+	#$Submitter    	= $_POST['Submitter'];
 	$eventname   	= $_POST['eventname'];
 	$Organization	= $_POST['Organization'];
 	$image       	= $_POST['image'];
@@ -55,7 +56,7 @@
 	$description 	= $_POST['description'];
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
-	
+	$Submitter    	= getUserName($UserID);
 	
 	#Function call
 	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submiter,$eventname,$Organization,$image,$link,$description,$UserID);
