@@ -6,10 +6,7 @@
 	#include_once('login.php');
 	include_once('getUserName.php');
 	
-	$UserID      	= $_POST['UserID'];
 	
-	$possibleSubmitter    	= getUserName($UserID);
-	var_dump($possibleSubmitter);
 	
 	
 	#Function Definition
@@ -63,19 +60,8 @@
 	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
-	
-
-	
-	
-	if ($possibleSubmitter){
-		echo "This is not possible";	
-		var_dump($possibleSubmitter);
-	}
-	else {
-		echo "This is possible";
-		var_dump($possibleSubmitter);
-	}
-	
+	$Submitter    	= getUserName($UserID);
+		
 	
 	
 	
@@ -84,8 +70,8 @@
 	
 	
 	#Function call
-	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
-	#print_r($result);
+	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
+	print_r($result);
 	
 	
 	#			#EventID 	
