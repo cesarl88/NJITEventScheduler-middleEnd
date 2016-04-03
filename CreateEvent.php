@@ -6,6 +6,12 @@
 	#include_once('login.php');
 	include_once('getUserName.php');
 	
+	$UserID      	= $_POST['UserID'];
+	
+	$possibleSubmitter    	= getUserName($UserID);
+	var_dump($possibleSubmitter);
+	
+	
 	#Function Definition
 	#Create event 
 	#Approved (TRUE or FALSE) , UserID (integer)
@@ -58,8 +64,8 @@
 	$UserID      	= $_POST['UserID'];
 	
 	
-	$possibleSubmitter    	= getUserName($UserID);
-	var_dump($possibleSubmitter);
+
+	
 	
 	if ($possibleSubmitter){
 		echo "This is not possible";	
