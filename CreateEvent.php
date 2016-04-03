@@ -53,7 +53,7 @@
 	$image       	= $_POST['image'];
 	$link        	= $_POST['link'];
 	$description 	= $_POST['description'];
-	$Approved    	= $_POST['Approved'];
+	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
 	
