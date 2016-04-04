@@ -36,7 +36,7 @@
 	#Temp
 	$ID			= $_POST['ID'];
 	
-	$var = getEventByID($ID)
+	$var = getEventByID($ID);
 	var_dump($var);
 	echo "<br/>";
 	
