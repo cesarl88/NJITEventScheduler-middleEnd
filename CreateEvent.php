@@ -23,20 +23,21 @@
 	function CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID ){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/CreateEvent.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array("title" 			=> $title, 			
-																						"startDate" 	=> $startDate, 		
-																						"EndDate" 		=> $EndDate, 		
-																						"startTime" 	=> $startTime, 		
-																						"endTime"		=> $endTime,		
-																						"Place"			=> $Place,			
-																						"Submitter"		=> $Submitter,		
-																						"eventname"		=> $eventname,		
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+																						"title"		 			=> $title, 			
+																						"startDate" 		=> $startDate, 		
+																						"EndDate" 			=> $EndDate, 		
+																						"startTime" 		=> $startTime, 		
+																						"endTime"				=> $endTime,		
+																						"Place"					=> $Place,			
+																						"Submitter"			=> $Submitter,		
+																						"eventname"			=> $eventname,		
 																						"Organization"	=> $Organization,
-																						"image"			=> $image,			
-																						"link"			=> $link,
-																						"description"	=> $description,	
-																						"Approved" 		=> 0,					#0 Not Approved by default
-																						"UserID" 		=> $UserID
+																						"image"					=> $image,			
+																						"link"					=> $link,
+																						"description"		=> $description,	
+																						"Approved" 			=> 0,					#0 Not Approved by default
+																						"UserID" 				=> $UserID
 																						)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$CreateEventResult = curl_exec($ch);
@@ -59,13 +60,11 @@
 	$startTime   	= $_POST['startTime'];			#Mandatory from DB
 	$endTime     	= $_POST['endTime'];				#Mandatory from DB
 	$Place       	= $_POST['Place'];
-	#$Submitter    	= $_POST['Submitter'];
 	$eventname   	= $_POST['eventname'];
 	$Organization	= $_POST['Organization'];
 	$image       	= $_POST['image'];
 	$link        	= $_POST['link'];
 	$description 	= $_POST['description'];
-	#$Approved    	= $_POST['Approved'];
 	$UserID      	= $_POST['UserID'];
 	
 	#Execute getUserName and assign it to Submitter
