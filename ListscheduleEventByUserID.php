@@ -46,9 +46,10 @@
 	{
 		$result = [];
 		foreach($listEvents as $item){
-			$result[] = json_decode($item['EventID'],true);
+			$result[] = json_decode($item['Event'],true);
 					/*	$test = json_decode($item->getJSON(),true);*/
-			 var_dump ($item['EventID']); 
+			$
+			var_dump (json_decode($item['Event'],true); 
 		}
 		#echo json_encode(array('Event' => $result));
 	}
