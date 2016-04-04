@@ -32,8 +32,9 @@
 	
 	#print_r ($result);
 	$result = json_decode($result, true);
+	$varArray = $result['Event'];
 	var_dump ($result);
-
+	var_dump ($varArray);
 	
 	
 	

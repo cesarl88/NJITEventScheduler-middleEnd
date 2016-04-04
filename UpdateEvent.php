@@ -10,8 +10,13 @@
 		$replyUserName = curl_exec($ch);
 		curl_close($ch);
 		return $replyUserName;
-	
 	}
+	
+	
+	
+	
+	
+	
 	
 	#Function Definition
 	function UpdateEvent($UserID,$ID,$title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$Organization,$eventname,$image,$link,$description,$Approved ){
