@@ -44,12 +44,12 @@
 	
 	
 	
-	if($listEvents)
+	if(isset($listEvents))
 	{
 		$result = [];
 		foreach($listEvents as $item){
-			
-			var_dump (json_decode($item['Event'],true); 
+			$tmp = json_decode($item['Event'],true);
+			var_dump ($tmp); 
 			#$result[] = json_decode($item['Event'],true);
 					/*	$test = json_decode($item->getJSON(),true);*/
 			
