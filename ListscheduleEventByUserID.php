@@ -3,6 +3,9 @@
 	#include_once('login.php');
 	#include_once('getEventByID.php');
 	#Function Definition
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);
+	
 	
 	function getEventByID($ID){
 		$ch = curl_init();
