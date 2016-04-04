@@ -48,18 +48,27 @@
 	if($result['Role'] == 2){
 		#echo "<br/>";
 		#echo 'https://web.njit.edu/~jar63/CS490/UserCalendar.html';
-		echo json_encode(array('RoleID' => $result['Role'], 'UserID' => $result['UserID'] ,'Reply' => "1" , 'Site' => "https://web.njit.edu/~jar63/CS490/UserCalendar.html"),JSON_PRETTY_PRINT);
+		echo json_encode(array( 'RoleID' => $result['Role'],
+														'UserID' => $result['UserID'] ,
+														'Reply' => "1" , 
+														'Site' => "https://web.njit.edu/~jar63/CS490/UserCalendar.html"),JSON_PRETTY_PRINT);
 	}
 	#else if if role is user
 	elseif($result['Role'] == 1){
 		#echo "<br/>";
 		#echo 'https://web.njit.edu/~jar63/CS490/AdminCalendar.html';
-		echo json_encode(array('RoleID' => $result['Role'], 'UserID' => $result['UserID'] ,'Reply' => "1" , 'Site' => "https://web.njit.edu/~jar63/CS490/AdminCalendar.html"),JSON_PRETTY_PRINT);
+		echo json_encode(array( 'RoleID' => $result['Role'],
+														'UserID' => $result['UserID'] ,
+														'Reply' => "1" , 
+														'Site' => "https://web.njit.edu/~jar63/CS490/AdminCalendar.html"),JSON_PRETTY_PRINT);
 	}
 	else{
 		#echo "<br/>";
 		#echo 'https://web.njit.edu/~jar63/CS490/index.html';
-		echo json_encode(array('RoleID' => $result['Role'], 'UserID' => $result['UserID'] ,'Reply' => "-1" , 'Site' => "https://web.njit.edu/~jar63/CS490/index.html"),JSON_PRETTY_PRINT);
+		echo json_encode(array( 'RoleID' => "-1",
+														'UserID' => $result['UserID'] ,
+														'Reply' => "-1" ,
+														'Site' => "https://web.njit.edu/~jar63/CS490/index.html"),JSON_PRETTY_PRINT);
 		
 	}
 	
