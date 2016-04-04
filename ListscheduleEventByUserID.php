@@ -35,7 +35,7 @@
 	
 	
 	$UserID = $_POST['UserID'];
-	
+	print_r (UserID);
 	$listEvents = ListscheduleEventByUserID($UserID);
 	
 	print_r($listEvents);
