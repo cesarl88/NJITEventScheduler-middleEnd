@@ -4,7 +4,7 @@
 	#Function Definition
 	
 	
-	function unscheduleEvent($EventID,$UserID){
+	function scheduleEvent($EventID,$UserID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/scheduleEvent.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
