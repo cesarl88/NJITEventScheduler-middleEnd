@@ -38,30 +38,31 @@
 	
 	$listEvents = ListscheduleEventByUserID($UserID);
 	
-	print_r( $listEvents );
-	var_dump($listEvents);
-	$listEvents = json_decode($listEvents,true);
+	print_r($listEvents);
 	var_dump($listEvents);
 	
-	
-	if($listEvents)
-	{
-		$result = [];
-		foreach($listEvents as $item){
-			
-			var_dump (json_decode($item['Event'],true); 
-			//$result[] = json_decode($item['Event'],true);
-					/*	$test = json_decode($item->getJSON(),true);*/
-			
-			
-		}
-		#echo json_encode(array('Event' => $result));
-	}
-   else{
-   	echo json_encode(array('EventID' => -1));
-   }
-  
-  
+	#$listEvents = json_decode($listEvents,true);
+	#var_dump($listEvents);
+	#
+	#
+	#if($listEvents)
+	#{
+	#	$result = [];
+	#	foreach($listEvents as $item){
+	#		
+	#		var_dump (json_decode($item['Event'],true); 
+	#		//$result[] = json_decode($item['Event'],true);
+	#				/*	$test = json_decode($item->getJSON(),true);*/
+	#		
+	#		
+	#	}
+	#	#echo json_encode(array('Event' => $result));
+	#}
+  # else{
+  # 	echo json_encode(array('EventID' => -1));
+  # }
+  #
+  #
   
   
   
