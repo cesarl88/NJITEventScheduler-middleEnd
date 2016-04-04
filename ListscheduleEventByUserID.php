@@ -44,24 +44,24 @@
 	
 	
 	
-	#if($listEvents)
-	#{
-	#	$result = [];
-	#	foreach($listEvents as $item){
-	#		
-	#		var_dump (json_decode($item['Event'],true); 
-	#		//$result[] = json_decode($item['Event'],true);
-	#				/*	$test = json_decode($item->getJSON(),true);*/
-	#		
-	#		
-	#	}
-	#	#echo json_encode(array('Event' => $result));
-	#}
-  # else{
-  # 	echo json_encode(array('EventID' => -1));
-  # }
-  #
-  #
+	if($listEvents)
+	{
+		$result = [];
+		foreach($listEvents as $item){
+			
+			var_dump (json_decode($item['Event'],true); 
+			#$result[] = json_decode($item['Event'],true);
+					/*	$test = json_decode($item->getJSON(),true);*/
+			
+			
+		}
+		#echo json_encode(array('Event' => $result));
+	}
+   else{
+   	echo json_encode(array('EventID' => -1));
+   }
+  
+  
   
   
   
