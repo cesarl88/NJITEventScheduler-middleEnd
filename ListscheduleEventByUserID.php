@@ -46,10 +46,12 @@
 	{
 		$result = [];
 		foreach($listEvents as $item){
-			$result[] = json_decode($item['Event'],true);
-					/*	$test = json_decode($item->getJSON(),true);*/
-			$
+			
 			var_dump (json_decode($item['Event'],true); 
+			//$result[] = json_decode($item['Event'],true);
+					/*	$test = json_decode($item->getJSON(),true);*/
+			
+			
 		}
 		#echo json_encode(array('Event' => $result));
 	}
