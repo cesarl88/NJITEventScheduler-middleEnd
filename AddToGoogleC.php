@@ -68,7 +68,7 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	
 	
 	$finalTime = strtotime(startDate1);
-	echo date('Y-m-d\TH:i:s', $finalTime);
+	var_dump(date('Y-m-d\TH:i:s', $finalTime));
 	
 	
 	#call function
