@@ -43,14 +43,14 @@
 	{
 		$result = [];
 		foreach($listEvents as $item){
-			$result[] = json_decode($item['Event'],true);
+			$result[] = json_decode($item['EventID'],true);
 					/*	$test = json_decode($item->getJSON(),true);*/
-			 var_dump ($item['Event']); 
+			 var_dump ($item['EventID']); 
 		}
-		echo json_encode(array('Event' => $result));
+		#echo json_encode(array('Event' => $result));
 	}
    else{
-   	echo json_encode(array('Event' => -1));
+   	echo json_encode(array('EventID' => -1));
    }
   
   
