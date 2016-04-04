@@ -65,8 +65,9 @@
 	if(isset($tmp)){
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
-			var_dump ($value);
+			var_dump ($value['EventID']);
 			echo "<br/>";
+			
 			
 			#$EventInfo = getEventByID($value);
 			#var_dump($EventInfo);
