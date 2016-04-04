@@ -37,11 +37,11 @@
 	$UserID = $_POST['UserID'];
 	
 	#Temp
-	$ID			= $_POST['ID'];
-	
-	$var = getEventByID($ID);
-	var_dump($var);
-	echo "<br/>";
+	#$ID			= $_POST['ID'];
+	#
+	#$var = getEventByID($ID);
+	#var_dump($var);
+	#echo "<br/>";
 	
 	$listEvents = ListscheduleEventByUserID($UserID);
 	var_dump($listEvents);
@@ -65,7 +65,7 @@
 	if(isset($tmp)){
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
-			$EventInfo = getEventByID($value['EventID']);
+			$EventInfo = getEventByID($value);
 			
 			var_dump($EventInfo);
 			
