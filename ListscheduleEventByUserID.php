@@ -46,13 +46,13 @@
 	var_dump($tmp);
 	echo "<br/>";
 	
-	if(isset($tmp)){
-		foreach($tmp as $value){
-				var_dump ($value); 
-				echo "<br/>";
-			}
-			
-		}
+	#if(isset($tmp)){
+	#	foreach($tmp as $value){
+	#			var_dump ($value); 
+	#			echo "<br/>";
+	#		}
+	#		
+	#	}
 	
 	#	#echo json_encode(array('Event' => $result));
 	#}
