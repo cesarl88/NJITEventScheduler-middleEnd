@@ -65,7 +65,7 @@
 			
 		}
 	}
-	print_r(json_encode($Export),JSON_PRETTY_PRINT);
+	print_r(json_encode($Export));
 	
 	
 
