@@ -25,30 +25,7 @@
 	print_r($result);
 	
 	
-	#if($schedule)
-	#{
-  	#$result = [];
-  	#foreach($schedule as $item)
-  	#{
-  	#	$result[] = $item->getJSON();
-  	#	   	/*	$test = json_decode($item->getJSON(),true);
-  	#	 echo 'Title : '.$test['Title'].'<br/>'; */
-  	#}
-  	#echo json_encode(array('Event' => $result));
-   #}
-   #else
-   #{
-   #	echo json_encode(array('Event' => -1));
-   #}
-  
-  
-  
-  
-  
 	
-	#Function call
-	
-
 ?>
 
 

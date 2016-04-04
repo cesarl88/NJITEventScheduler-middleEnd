@@ -59,7 +59,7 @@
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
 			$value = ($value['EventID']);
-			$Export = getEventByID($value);
+			$Export[] = getEventByID($value);
 			#var_dump($Export);
 			#echo "<br/>";
 			

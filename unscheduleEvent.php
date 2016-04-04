@@ -8,7 +8,7 @@
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/unscheduleEvent.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-																						"UserID"			=>	$UserID,
+																						"UserID"		=>	$UserID,
 																						"EventID"		=>	$EventID)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
@@ -24,29 +24,6 @@
 	$result = unscheduleEvent($EventID,$UserID);
 	print_r($result);
 	
-	
-	#if($schedule)
-	#{
-  	#$result = [];
-  	#foreach($schedule as $item)
-  	#{
-  	#	$result[] = $item->getJSON();
-  	#	   	/*	$test = json_decode($item->getJSON(),true);
-  	#	 echo 'Title : '.$test['Title'].'<br/>'; */
-  	#}
-  	#echo json_encode(array('Event' => $result));
-   #}
-   #else
-   #{
-   #	echo json_encode(array('Event' => -1));
-   #}
-  
-  
-  
-  
-  
-	
-	#Function call
 	
 
 ?>
