@@ -37,6 +37,9 @@
 	$listEvents = ListscheduleEventByUserID($UserID);
 	
 	print_r( $listEvents );
+	var_dump($listEvents);
+	$listEvents = json_decode($listEvents,true);
+	var_dump($listEvents);
 	
 	
 	if($listEvents)
