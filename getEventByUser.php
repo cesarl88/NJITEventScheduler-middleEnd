@@ -6,12 +6,10 @@
 	#include_once('login.php');
 	
 	#Function Definition
-	# Get json with event information from a specific date
-	# $Date has to be on format YYYY-MM-DD, $Approved 1 for Approved, 0 for Not Approved
-	function getEventByDate($Date , $Approved){
+	function getEventByDate($UserID){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/getEventByDate.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "Date=".$Date."&Approved=".$Approved);
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/getEventByUser.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
@@ -25,20 +23,14 @@
 	
 	
 	#variables for getEventByDate
-	$Date 		 = $_POST['Date'];
+	$UserID 		 = $_POST['UserID'];
 	
-	if(isset($_POST['Approved'])){
-		$Approved = $_POST['Approved'];
-	}
-	else{
-		$Approved = '1';
-	}
 	
 	#Function call
 	
 	#echo $Date;
 	#echo $Approved;
-	$result = getEventByDate($Date , $Approved);
+	$result = getEventByUser($UserID);
 	print_r( $result );
 
 ?>
