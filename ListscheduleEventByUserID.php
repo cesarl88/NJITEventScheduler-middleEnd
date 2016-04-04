@@ -57,7 +57,7 @@
 	
 	#if(isset($tmp)){
 		foreach($tmp as $value){
-			var_dump ($value); 
+			var_dump (json_decode($value,true)); 
 			echo "<br/>";
 		}
 	#		
