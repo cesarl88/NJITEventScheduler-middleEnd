@@ -17,10 +17,27 @@
 	
 	}
 	
+	
+	function getRole($UserID){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/getRole.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getRoleReply = curl_exec($ch);
+		curl_close($ch);
+		//echo "<br/>";
+		$value = (json_decode($getRoleReply,true));
+		
+		#pending
+		return $value;
+	}
+		
+	
+	
 	#Function Definition
 	#Create event 
 	#Approved (TRUE or FALSE) , UserID (integer)
-	function CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID ){
+	function CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID,$Approved ){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/CreateEvent.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -36,7 +53,7 @@
 																						"image"					=> $image,			
 																						"link"					=> $link,
 																						"description"		=> $description,	
-																						"Approved" 			=> 0,					#0 Not Approved by default
+																						"Approved" 			=> $Approved,					
 																						"UserID" 				=> $UserID
 																						)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -54,7 +71,7 @@
 	
 	
 	#Variables to use for CreateEvent
-	$title		 	= $_POST['title'];				#Mandatory from DB
+	$title		 		= $_POST['title'];				#Mandatory from DB
 	$startDate   	= $_POST['startDate'];
 	$EndDate     	= $_POST['EndDate'];
 	$startTime   	= $_POST['startTime'];			#Mandatory from DB
@@ -68,16 +85,31 @@
 	$UserID      	= $_POST['UserID'];
 	
 	#Execute getUserName and assign it to Submitter
-	$result = getUserName($UserID);
+	$resultUser = getUserName($UserID);
 	#print_r($result);
-	$result = json_decode($result,true);
-	$Submitter = $result['UserName'];
+	$resultUser = json_decode($resultUser,true);
+	$Submitter = $resultUser['UserName'];
 	#var_dump($Submitter);
 	
 	
+	$resultRole = getRole($UserID);
+	$resultRole = json_decode($resultRole, true);
+	var_dump($resultRole);
+	var_dump($resultRole);
+	if($resultRole['Role']==1){
+		$Approved = 1;
+	}
+	elseif($resultRole['Role']==2){
+		$Approved = 0;
+	}
+	else{
+		
+	}
+	var_dump($Approved);
+	
 	#Function call
-	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID);
-	print_r($result);
+	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID, $Approved);
+	#print_r($result);
 	
 	
 	#			#EventID 	

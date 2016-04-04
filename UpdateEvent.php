@@ -37,7 +37,7 @@
 																						"image"					=>	$image,
 																						"link"					=>	$link,
 																						"description"		=>	$description,
-																						"Approved"			=>	$Approved
+																						"Approved"			=>	0
 																						)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$UpdateEventResult = curl_exec($ch);
