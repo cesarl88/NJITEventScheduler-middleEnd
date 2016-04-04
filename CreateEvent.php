@@ -89,7 +89,7 @@
 	#print_r($result);
 	$resultUser = json_decode($resultUser,true);
 	$Submitter = $resultUser['UserName'];
-	#var_dump($Submitter);
+	var_dump($Submitter);
 	
 	
 	$resultRole = getRole($UserID);
