@@ -1,8 +1,20 @@
 <?php
 	#session_start();
-	#include_once('login.php');
-	#include_once('getEventByID.php');
+	include_once('login.php');
+	include_once('getEventByID.php');
 	#Function Definition
+	
+	function getEventByID($ID){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "getEventByID.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		#echo "<br/>";
+		#$value = (json_decode($getEventReply,true));
+		return $getEventReply;	#review reply from DB	
+	}
 	
 	
 	function ListscheduleEventByUserID($UserID){
@@ -17,17 +29,7 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
-	function getEventByID($ID){
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "getEventByID.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$getEventReply = curl_exec($ch);
-		curl_close($ch);
-		#echo "<br/>";
-		#$value = (json_decode($getEventReply,true));
-		return $getEventReply;	#review reply from DB	
-	}
+	
 	
 	
 	
