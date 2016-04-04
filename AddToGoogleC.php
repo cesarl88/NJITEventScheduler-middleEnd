@@ -52,7 +52,7 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	$startDate2 = $startDate1;
 	
 	$datetime = \DateTime::createFromFormat("Y-m-d H:i:s",$startDate2);
-	$datetime->format(\DateTime::RFC3339);
+	#$datetime->format(\DateTime::RFC3339);
 	var_dump($datetime);
 	echo "<br/>";
 	
