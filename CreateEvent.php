@@ -89,25 +89,23 @@
 	#print_r($result);
 	$resultUser = json_decode($resultUser,true);
 	$Submitter = $resultUser['UserName'];
-	var_dump($Submitter);
+	#var_dump($Submitter);
 	
 	
 	$resultRole = getRole($UserID);
-	var_dump($resultRole);
+	#var_dump($resultRole);
 	if($resultRole['Role']==1){
 		$Approved = 1;
 	}
 	elseif($resultRole['Role']==2){
 		$Approved = 0;
 	}
-	else{
-		
-	}
-	var_dump($Approved);
+	
+	#var_dump($Approved);
 	
 	#Function call
-	#$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID, $Approved);
-	#print_r($result);
+	$result = CreateEvent($title,$startDate,$EndDate,$startTime,$endTime,$Place,$Submitter,$eventname,$Organization,$image,$link,$description,$UserID, $Approved);
+	print_r($result);
 	
 	
 	#			#EventID 	
