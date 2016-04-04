@@ -66,11 +66,11 @@
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
 			var_dump ($value);
-			#$EventInfo = getEventByID($value);
-			
-			var_dump($EventInfo);
-			
 			echo "<br/>";
+			
+			#$EventInfo = getEventByID($value);
+			#var_dump($EventInfo);
+			
 		}
 	#		
 	#	}
