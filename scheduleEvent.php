@@ -19,9 +19,9 @@
 	}
 	
 	$EventID = $_POST['EventID'];
-	$UserID = $_POST['UserID'];
+	$UserID  = $_POST['UserID'];
 	
-	$result = unscheduleEvent();
+	$result = scheduleEvent($EventID,$UserID);
 	print_r($result);
 	
 	
