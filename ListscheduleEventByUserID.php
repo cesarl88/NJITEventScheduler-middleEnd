@@ -32,16 +32,18 @@
 	
 	
 	$UserID = $_POST['UserID'];
-	print_r ($UserID);
+	
 	$listEvents = ListscheduleEventByUserID($UserID);
 	
-	print_r($listEvents);
 	var_dump($listEvents);
+	echo "<br/>";
 	
-	#$listEvents = json_decode($listEvents,true);
-	#var_dump($listEvents);
-	#
-	#
+	$listEvents = json_decode($listEvents,true);
+	var_dump($listEvents);
+	echo "<br/>";
+	
+	
+	
 	#if($listEvents)
 	#{
 	#	$result = [];
