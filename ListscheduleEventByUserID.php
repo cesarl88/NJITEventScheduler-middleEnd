@@ -5,7 +5,7 @@
 	#Function Definition
 	
 	
-	function getEventByID($UserID){
+	function ListscheduleEventByUserID($UserID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/ListscheduleEventByUserID.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID);
@@ -14,29 +14,28 @@
 		curl_close($ch);
 		#echo "<br/>";
 		#$value = (json_decode($getEventReply,true));
-		
-		
 		return $getEventReply;	#review reply from DB	
 	}
 	
+	$result = ListscheduleEventByUserID();
+	print_r( $result );
 	
 	
-	
-	if($schedule)
-  {
-  	$result = [];
-  	foreach($schedule as $item)
-  	{
-  		$result[] = $item->getJSON();
-  		   	/*	$test = json_decode($item->getJSON(),true);
-  		 echo 'Title : '.$test['Title'].'<br/>'; */
-  	}
-  	echo json_encode(array('Event' => $result));
-  }
-  else
-  {
-  	echo json_encode(array('Event' => -1));
-  }
+	#if($schedule)
+	#{
+  	#$result = [];
+  	#foreach($schedule as $item)
+  	#{
+  	#	$result[] = $item->getJSON();
+  	#	   	/*	$test = json_decode($item->getJSON(),true);
+  	#	 echo 'Title : '.$test['Title'].'<br/>'; */
+  	#}
+  	#echo json_encode(array('Event' => $result));
+   #}
+   #else
+   #{
+   #	echo json_encode(array('Event' => -1));
+   #}
   
   
   
@@ -44,8 +43,7 @@
   
 	
 	#Function call
-	$result = functionCall();
-	print_r(json_encode( $result ,true));
+	
 
 ?>
 
