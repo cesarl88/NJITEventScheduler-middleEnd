@@ -30,9 +30,9 @@
 	$result = getEventByID($ID);
 	
 	
+	#print_r ($result);
+	$result = json_decode($result, true);
 	print_r ($result);
-	
-	
 
 	
 	
