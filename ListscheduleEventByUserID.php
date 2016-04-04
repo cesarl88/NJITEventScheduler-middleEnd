@@ -3,8 +3,8 @@
 	#include_once('login.php');
 	#include_once('getEventByID.php');
 	#Function Definition
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);
 	
 	
 	function getEventByID($ID){
@@ -72,6 +72,8 @@
 			#var_dump($EventInfo);
 			
 		}
+	}
+	
 	#		
 	#	}
 	
