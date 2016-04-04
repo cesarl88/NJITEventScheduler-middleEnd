@@ -6,7 +6,7 @@
 	#include_once('login.php');
 	
 	#Function Definition
-	function getEventByDate($UserID){
+	function getEventByUser($UserID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/getEventByUser.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID);
