@@ -94,8 +94,6 @@
 	
 	$resultRole = getRole($UserID);
 	var_dump($resultRole);
-	$resultRole = json_decode($resultRole, true);
-	var_dump($resultRole);
 	if($resultRole['Role']==1){
 		$Approved = 1;
 	}
