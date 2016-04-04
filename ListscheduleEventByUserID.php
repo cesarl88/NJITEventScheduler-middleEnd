@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	#session_start();
 	#include_once('login.php');
 	include_once('getEventByID.php');
 	#Function Definition
