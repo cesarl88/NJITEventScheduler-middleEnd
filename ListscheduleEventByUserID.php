@@ -35,32 +35,24 @@
 	
 	
 	$UserID = $_POST['UserID'];
-	
-	#Temp
-	#$ID			= $_POST['ID'];
-	#
-	#$var = getEventByID($ID);
-	#var_dump($var);
-	#echo "<br/>";
+
 	
 	$listEvents = ListscheduleEventByUserID($UserID);
-	var_dump($listEvents);
-	echo "<br/>";
-	
-	
+	#var_dump($listEvents);
+	#echo "<br/>";
 	
 	
 	$listEvents = json_decode($listEvents,true);
-	var_dump($listEvents);
-	echo "<br/>";
+	#var_dump($listEvents);
+	#echo "<br/>";
 	
 	$tmp = $listEvents['Event'];
-	var_dump($tmp);
-	echo "<br/>";
-	
-	echo $tmp['Event'];
-	echo "<br/>";
-	echo "<br/>";
+	#var_dump($tmp);
+	#echo "<br/>";
+	#
+	#echo $tmp['Event'];
+	#echo "<br/>";
+	#echo "<br/>";
 	
 	if(isset($tmp)){
 		$Export;
@@ -68,31 +60,13 @@
 			$value = json_decode($value,true); 
 			$value = ($value['EventID']);
 			$Export = getEventByID($value);
-			var_dump($Export);
-			echo "<br/>";
-			
-			
-			#$EventInfo = getEventByID($value);
-			#var_dump($EventInfo);
+			#var_dump($Export);
+			#echo "<br/>";
 			
 		}
 	}
-	print_r($Export);
-	#		
-	#	}
+	print_r(json_encode($Export),JSON_PRETTY_PRINT);
 	
-	#	#echo json_encode(array('Event' => $result));
-	#}
-  # else{
-  # 	echo json_encode(array('EventID' => -1));
-  #}
-  
-  
-  
-  
-  
-	
-	#Function call
 	
 
 ?>
