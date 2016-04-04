@@ -1,7 +1,7 @@
 <?php
 	#session_start();
-	include_once('login.php');
-	include_once('getEventByID.php');
+	#include_once('login.php');
+	#include_once('getEventByID.php');
 	#Function Definition
 	
 	function getEventByID($ID){
@@ -28,9 +28,6 @@
 		#$value = (json_decode($getEventReply,true));
 		return $getEventReply;	#review reply from DB	
 	}
-	
-	
-	
 	
 	
 	
