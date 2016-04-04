@@ -6,7 +6,7 @@
 	
 	function getEventByID($ID){
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "getEventByID.php"); 
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~jsr24/CS490/getEventByID.php"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
