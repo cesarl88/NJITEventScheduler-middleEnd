@@ -56,7 +56,9 @@
 	echo "<br/>";
 	
 	echo $tmp['Event'];
-	echo "UpHere<br/>";
+	echo "<br/>";
+	echo "<br/>";
+	
 	if(isset($tmp)){
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
