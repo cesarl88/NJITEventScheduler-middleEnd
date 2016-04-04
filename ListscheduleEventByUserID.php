@@ -55,8 +55,6 @@
 				echo "<br/>";
 			}
 			
-			#$result[] = json_decode($item['Event'],true);
-					/*	$test = json_decode($item->getJSON(),true);*/
 		}
 	
 	#	#echo json_encode(array('Event' => $result));
