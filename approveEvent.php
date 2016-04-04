@@ -32,7 +32,7 @@
 	
 	#print_r ($result);
 	$result = json_decode($result, true);
-	print_r ($result);
+	var_dump ($result);
 
 	
 	
