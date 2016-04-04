@@ -63,7 +63,7 @@
 	echo "<br/>";
 	
 	if(isset($tmp)){
-		#$Export[];
+		$Export;
 		foreach($tmp as $value){
 			$value = json_decode($value,true); 
 			$value = ($value['EventID']);
@@ -77,7 +77,7 @@
 			
 		}
 	}
-	#print_r($Export);
+	print_r($Export);
 	#		
 	#	}
 	
