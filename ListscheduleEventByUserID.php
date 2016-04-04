@@ -35,16 +35,16 @@
 	
 	$listEvents = ListscheduleEventByUserID($UserID);
 	
-	#var_dump($listEvents);
-	echo "<br/>";
-	
-	$listEvents = json_decode($listEvents,true);
 	var_dump($listEvents);
 	echo "<br/>";
 	
-	$tmp = $listEvents['Event'];
-	var_dump($tmp);
-	echo "<br/>";
+	#$listEvents = json_decode($listEvents,true);
+	#var_dump($listEvents);
+	#echo "<br/>";
+	
+	#$tmp = $listEvents['Event'];
+	#var_dump($tmp);
+	#echo "<br/>";
 	
 	#if(isset($tmp)){
 	#	foreach($tmp as $value){
