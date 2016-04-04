@@ -17,7 +17,9 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
-	$result = ListscheduleEventByUserID();
+	$UserID = $_POST['UserID'];
+	
+	$result = ListscheduleEventByUserID($UserID);
 	print_r( $result );
 	
 	

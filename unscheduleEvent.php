@@ -16,6 +16,9 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
+	$EventID = $_POST['EventID'];
+	$UserID = $_POST['UserID'];
+	
 	$result = unscheduleEvent();
 	print_r($result);
 	
