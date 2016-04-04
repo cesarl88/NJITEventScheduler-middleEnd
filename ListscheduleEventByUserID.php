@@ -1,7 +1,7 @@
 <?php
 	#session_start();
 	#include_once('login.php');
-	include_once('getEventByID.php');
+	#include_once('getEventByID.php');
 	#Function Definition
 	
 	
@@ -17,27 +17,41 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
+	function getEventByID($ID){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "getEventByID.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		#echo "<br/>";
+		#$value = (json_decode($getEventReply,true));
+		return $getEventReply;	#review reply from DB	
+	}
+	
+	
+	
+	
 	$UserID = $_POST['UserID'];
 	
-	$result = ListscheduleEventByUserID($UserID);
-	print_r( $result );
+	$listEvents = ListscheduleEventByUserID($UserID);
+	
+	print_r( $listEvents );
 	
 	
-	#if($schedule)
-	#{
-  	#$result = [];
-  	#foreach($schedule as $item)
-  	#{
-  	#	$result[] = $item->getJSON();
-  	#	   	/*	$test = json_decode($item->getJSON(),true);
-  	#	 echo 'Title : '.$test['Title'].'<br/>'; */
-  	#}
-  	#echo json_encode(array('Event' => $result));
-   #}
-   #else
-   #{
-   #	echo json_encode(array('Event' => -1));
-   #}
+	if($listEvents)
+	{
+		$result = [];
+		foreach($listEvents as $item){
+			$result[] = json_decode($item['EventID'],true);
+					/*	$test = json_decode($item->getJSON(),true);*/
+			 var_dump ($item['EventID']); 
+		}
+		echo json_encode(array('Event' => $result));
+	}
+   else{
+   	echo json_encode(array('Event' => -1));
+   }
   
   
   
