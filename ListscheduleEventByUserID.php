@@ -42,7 +42,9 @@
 	var_dump($listEvents);
 	echo "<br/>";
 	
-	
+	$tmp = $listEvents['Event'];
+	var_dump($tmp);
+	echo "<br/>";
 	
 	#if(isset($listEvents))
 	#{
