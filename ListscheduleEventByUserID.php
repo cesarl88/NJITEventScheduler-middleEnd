@@ -46,17 +46,16 @@
 	var_dump($tmp);
 	echo "<br/>";
 	
-	#if(isset($listEvents))
-	#{
-	#	foreach($listEvents as $item){
-	#		$tmp = json_decode($item['Event'],true);
-	#		var_dump ($tmp['EventID']); 
-	#		echo "<br/>";
-	#		#$result[] = json_decode($item['Event'],true);
-	#				/*	$test = json_decode($item->getJSON(),true);*/
-	#		
-	#		
-	#	}
+	if(isset($tmp))
+	{
+		foreach($tmp as $value){
+			var_dump ($value['EventID']); 
+			echo "<br/>";
+			#$result[] = json_decode($item['Event'],true);
+					/*	$test = json_decode($item->getJSON(),true);*/
+			
+			
+		}
 	#	#echo json_encode(array('Event' => $result));
 	#}
   # else{
