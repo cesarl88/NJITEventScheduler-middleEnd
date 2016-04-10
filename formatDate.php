@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 
 function formatDate($Date, $Time){
-	$val = $Date."T".$Time;
+	$val = $Date."T".$Time."Z";
 	return $val; 
 	#echo date();
 }	
