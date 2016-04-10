@@ -32,11 +32,6 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	printf('Event created: %s\n', $event->htmlLink);
 	}
 	
-function formatDate($Date, $Time){
-	echo $Date."T".$Time;
-	
-	echo date();
-}	
 	
 	
 	
@@ -48,36 +43,12 @@ function formatDate($Date, $Time){
 	$startTime   	= $_POST['startTime'];
 	$endTime     	= $_POST['endTime'];
 	
+	$startD 	=	formatDate($startDate,$startTime);
+	$endD		=	formatDate($EndDate, $endTime);
 	
-	#Format Start date with form '2015-05-28T09:00:00-04:00'
-	#"Y-m-d\TH:i:sP"
-	
-	$startDate 	= $startDate.'T'.$startTime.'-04:00';
-	#var_dump($startDate);
-	#echo "<br/>";
-	
-	$startDate1 = $startDate.' '.$startTime;
-	#$startDate2 = $startDate1;
-	
-	#$datetime = \DateTime::createFromFormat("Y-m-d H:i:s",$startDate2);
-	#$datetime->format(\DateTime::RFC3339);
-	#var_dump($datetime);
-	#echo "<br/>";
-	
-	
-	$startDate1 = date("c", strtotime($startDate1));
-	#var_dump($startDate1);
-	#echo "<br/>";
-	
-	
-	#Format End date with form '2015-05-28T17:00:00-04:00'
-	#$EndDate 	= $EndDate.'T'.$endTime.'-04:00';
-	#var_dump($EndDate);
-	
-	
-	$finalTime = strtotime(startDate1);
-	var_dump(date('Y-m-d\TH:i:s', $finalTime));
-	
+	var_dump($startD);
+	echo "</br>";
+	var_dump($endD);
 	
 	#call function
 	#$result = addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDate);
