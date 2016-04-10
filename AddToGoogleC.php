@@ -32,6 +32,14 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	printf('Event created: %s\n', $event->htmlLink);
 	}
 	
+function formatDate($Date, $Time){
+	echo $Date."T".$Time;
+	
+	echo date();
+}	
+	
+	
+	
 	$title			= $_POST['title'];
 	$Place			= $_POST['Place'];
 	$description	= $_POST['description'];
