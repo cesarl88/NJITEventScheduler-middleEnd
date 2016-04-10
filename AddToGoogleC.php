@@ -4,22 +4,20 @@ error_reporting(E_ALL);
 
 include_once('formatDate.php');
 	
-function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDate){
+function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite){
 	$event = new Google_Service_Calendar_Event(
 		array(
 		  'summary' 		=> $title,
 		  'location' 		=> $Place,
 		  'description' 	=> $description,
+		  'htmlLink'		=> $linkSite,
 		  'start' => array(
-			 'dateTime' => $startDate,
+			 'dateTime' => $startD,
 			 'timeZone' => 'America/New_York',
 		  ),
 		  'end' => array(
-			 'dateTime' => $EndDate,
+			 'dateTime' => $EndD,
 			 'timeZone' => 'America/New_York',
-		  ),
-		  'recurrence' => array(
-			 'RRULE:FREQ=DAILY;COUNT=2'
 		  ),
 		  'reminders' => array(
 				'useDefault' => FALSE,
@@ -36,23 +34,31 @@ function addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDa
 	
 	
 	
-	$title			= $_POST['title'];
-	$Place			= $_POST['Place'];
-	$description	= $_POST['description'];
-	$startDate   	= $_POST['startDate'];
-	$EndDate     	= $_POST['EndDate'];
-	$startTime   	= $_POST['startTime'];
-	$endTime     	= $_POST['endTime'];
+	$title			=	$_POST['title'];
+	$Place			=	$_POST['Place'];
+	$description	=	$_POST['description'];
+	$startDate   	=	$_POST['startDate'];
+	$EndDate     	=	$_POST['EndDate'];
+	$startTime   	=	$_POST['startTime'];
+	$endTime     	=	$_POST['endTime'];
+	$eventID			=	$_POST['eventID'];
 	
+	#Format Start Date and End Date with GoogleAPI specifications 
+	#Sample: "2015-05-28T17:00:00Z"
 	$startD 	=	formatDate($startDate,$startTime);
 	$endD		=	formatDate($EndDate, $endTime);
 	
-	var_dump($startD);
-	echo "</br>";
-	var_dump($endD);
+	#var_dump($startD);
+	#echo "</br>";
+	#var_dump($endD);
+	
+	#Create link to embed on GoogleCalendar
+	$linkSite = "<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
+	
+	echo $linkSite;
 	
 	#call function
-	#$result = addGoogleCalendarEvent($title, $Place, $description, $startDate, $EndDate);
+	#$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite);
 	#print_r( $result);
 	
 	
