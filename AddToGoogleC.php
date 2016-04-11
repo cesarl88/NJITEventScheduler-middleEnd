@@ -53,9 +53,16 @@ function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $l
 	#var_dump($endD);
 	
 	#Create link to embed on GoogleCalendar
-	$linkSite = "<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
+	$linkSite = $title."<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
+	
+	
+	#possible solution
+	#      var form = '<form name="'+frmName+'" method="post" action="'+url'">'+pe+'</form>';
+	
 	
 	echo $linkSite;
+	
+	
 	
 	#call function
 	#$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite);
