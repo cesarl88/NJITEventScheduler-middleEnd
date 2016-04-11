@@ -8,7 +8,7 @@
 	function searchByKeyword($keyWord){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/searchByKeyword.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array( "keyWord" 	=> $UserID)));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array( "keyWord" 	=> $keyWord)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$replyUserName = curl_exec($ch);
 		curl_close($ch);
