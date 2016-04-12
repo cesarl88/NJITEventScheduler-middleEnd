@@ -26,9 +26,15 @@ function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $l
 			 ),
 		  ),
 	));
+	
+	#print_r($event);
+	#echo </br>;
+	#var_dump($event);
+	
+	return $event;
 	$calendarId = 'primary';
-	$event = $service->events->insert($calendarId, $event);
-	printf('Event created: %s\n', $event->htmlLink);
+	#$event = $service->events->insert($calendarId, $event);
+	#printf('Event created: %s\n', $event->htmlLink);
 	}
 	
 	
@@ -65,8 +71,8 @@ function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $l
 	
 	
 	#call function
-	#$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite);
-	#print_r( $result);
+	$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite);
+	print_r( $result);
 	
 	
 	
