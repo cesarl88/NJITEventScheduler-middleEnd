@@ -3,7 +3,9 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL);	
 
 include_once('formatDate.php');
-	
+require_once __DIR__ . '/vendor/autoload.php';
+
+
 function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite){
 	$event = new Google_Service_Calendar_Event(
 		array(
