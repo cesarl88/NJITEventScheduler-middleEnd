@@ -75,7 +75,7 @@
 	//Google API function to setup and authenticate user to have access to Calendar
 	function getClient() {
 	  $client = new Google_Client();
-	  $client->setApplicationName(APPLICATION_NAME);
+	  #$client->setApplicationName(APPLICATION_NAME);
 	  $client->setScopes(SCOPES);
 	  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
 	  $client->setAccessType('offline');
@@ -91,14 +91,19 @@
 		 #printf("Open the following link in your browser:\n%s\n", $authUrl);
 		 #print 'Enter verification code: ';
 		 #$authCode = trim(fgets(STDIN));
-		$authUrl = $client->createAuthUrl();
-		print "<a class='login' href='$authUrl'>Connect Me!</a>";
+		
 		 
 		 
 		 
 		 // Exchange authorization code for an access token.
-		 $accessToken = $client->authenticate($authCode);
-
+		$accessToken = $client->authenticate($authCode);
+		$_SESSION['token'] = $client->getAccessToken();
+		
+		
+		$authUrl = $client->createAuthUrl();
+		print "<a class='login' href='$authUrl'>Connect Me!</a>";
+		 
+		 
 		 // Store the credentials to disk.
 		 if(!file_exists(dirname($credentialsPath))) {
 			mkdir(dirname($credentialsPath), 0700, true);
