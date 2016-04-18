@@ -1,6 +1,6 @@
 <?php
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);	
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);	
 
 	include_once('formatDate.php');
 	
@@ -87,11 +87,15 @@
 	  } 
 	  else {
 		 // Request authorization from the user.
-		 $authUrl = $client->createAuthUrl();
-		 printf("Open the following link in your browser:\n%s\n", $authUrl);
-		 print 'Enter verification code: ';
-		 $authCode = trim(fgets(STDIN));
-
+		 //$authUrl = $client->createAuthUrl();
+		 #printf("Open the following link in your browser:\n%s\n", $authUrl);
+		 #print 'Enter verification code: ';
+		 #$authCode = trim(fgets(STDIN));
+		$authUrl = $client->createAuthUrl();
+		print "<a class='login' href='$authUrl'>Connect Me!</a>";
+		 
+		 
+		 
 		 // Exchange authorization code for an access token.
 		 $accessToken = $client->authenticate($authCode);
 
