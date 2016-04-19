@@ -104,7 +104,30 @@
 		 $client->refreshToken($client->getRefreshToken());
 		 file_put_contents($credentialsPath, $client->getAccessToken());
 	  }
-	  return $client;
+	  #return $client;
+	
+		if(isset($eventID)){
+			$event = getEventByID($eventID);
+			var_dump($event);
+			
+			#Format Start Date and End Date with GoogleAPI specifications 
+			#Sample: "2015-05-28T17:00:00Z"
+			$startD 	=	formatDate($startDate,$startTime);
+			$endD		=	formatDate($EndDate, $endTime);
+			
+			#Create link to embed on GoogleCalendar
+			$linkSite = $title."<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
+			#possible solution
+			#var form = '<form name="'+frmName+'" method="post" action="'+url'">'+pe+'</form>';
+		
+			#echo $linkSite;
+			#call function
+			$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $endD, $linkSite);
+			var_dump( $result);
+		}
+		else{
+			echo "Not event found!";
+		}
 	}
 	
 	/**
@@ -128,29 +151,7 @@
 	$client = getClient();
 	$service = new Google_Service_Calendar($client);
 	
-	if(isset($eventID)){
-		$event = getEventByID($eventID);
-		var_dump($event);
-		
-		#Format Start Date and End Date with GoogleAPI specifications 
-		#Sample: "2015-05-28T17:00:00Z"
-		$startD 	=	formatDate($startDate,$startTime);
-		$endD		=	formatDate($EndDate, $endTime);
-		
-		#Create link to embed on GoogleCalendar
-		$linkSite = $title."<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
-		#possible solution
-		#var form = '<form name="'+frmName+'" method="post" action="'+url'">'+pe+'</form>';
 	
-		#echo $linkSite;
-		#call function
-		$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $endD, $linkSite);
-		var_dump( $result);
-		
-	}
-	else{
-		echo "Not event found!";
-	}
 	
 	
 	
