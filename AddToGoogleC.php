@@ -109,7 +109,8 @@
 
 			// Step 2: The user accepted your access now you need to exchange it.
 			if (isset($_GET['code'])) {
-				echo "PartTwo".$_GET['token'];
+				session_start();
+				#echo "PartTwo".$_GET['token'];
 				echo "PartTwoSe".$_SESSION['eventID'];
 				$client->authenticate($_GET['code']);  
 				$_SESSION['token'] = $client->getAccessToken();
@@ -119,6 +120,7 @@
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
 			 if (!isset($_SESSION['token'])) {
+				session_start();
 				#echo "PartOne".$_SESSION['token'];
 				$authUrl = $client->createAuthUrl();
 				print "<a class='login' href='$authUrl'>Connect Me!</a>";
@@ -126,6 +128,7 @@
 
 			 // Step 3: We have access we can now create our service
 			if (isset($_SESSION['token'])) {
+				session_start();
 				$tmpVar = $_SESSION['eventID'];
 				echo $tmpVar."</br>";
 				$eventID = $tmpVar;
