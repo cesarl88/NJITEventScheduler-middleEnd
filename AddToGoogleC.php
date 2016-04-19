@@ -160,10 +160,10 @@
 					#var_dump( $result);
 				}
 				elseif(!isset($_SESSION['eventID'])){
-				
+					echo "Not event found!";
 				}
 				else{
-					echo "Not event found!";
+					echo json_encode('Reply' => -1) ;
 				}
 			}
 		
