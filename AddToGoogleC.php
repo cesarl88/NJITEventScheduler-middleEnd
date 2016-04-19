@@ -100,6 +100,7 @@
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
 				header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+				echo $_SESSION['token'];
 			 }
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
