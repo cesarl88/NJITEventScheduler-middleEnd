@@ -25,7 +25,14 @@
 	#$EndDate     	=	$_POST['EndDate'];
 	#$startTime   	=	$_POST['startTime'];
 	#$endTime     	=	$_POST['endTime'];
-	$_SESSION['eventID']	=	$_POST['ID'];
+	
+	if(isset($_POST['ID'])){
+		$var = $_POST['ID'];
+		var_dump ($var);
+		echo "<\br>";
+		$_SESSION['eventID']	=	$_POST['ID'];
+		echo $_SESSION['eventID'];
+	}
 	
 	//This function is supposed to get all event details
 	function getEventByID($ID){
@@ -92,14 +99,13 @@
 		else {
 			//For loging out.
 			if (isset($_GET['logout'])) {
-			unset($_SESSION['token']);
-			 }
-
+				unset($_SESSION['token']);
+			}
 
 			// Step 2: The user accepted your access now you need to exchange it.
 			if (isset($_GET['code'])) {
-				echo "PartTwo".$_GET['code'];
-				echo "PartTwoSe".$_SESSION['token'];
+				#echo "PartTwo".$_GET['code'];
+				#echo "PartTwoSe".$_SESSION['token'];
 				$client->authenticate($_GET['code']);  
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
