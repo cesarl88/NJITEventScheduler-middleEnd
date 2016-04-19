@@ -25,7 +25,7 @@
 	#$EndDate     	=	$_POST['EndDate'];
 	#$startTime   	=	$_POST['startTime'];
 	#$endTime     	=	$_POST['endTime'];
-	$eventID			=	$_POST['eventID'];
+	$_SESSION['eventID']	=	$_POST['eventID'];
 	
 	//This function is supposed to get all event details
 	function getEventByID($ID){
@@ -118,8 +118,8 @@
 				echo "Part3".$_SESSION['token'];
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
-				if(isset($eventID)){
-					$event = getEventByID($eventID);
+				if(isset($_SESSION['eventID'])){
+					$event = getEventByID($_SESSION['eventID']);
 					var_dump($event) ;
 					
 					#Format Start Date and End Date with GoogleAPI specifications 
