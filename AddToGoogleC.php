@@ -30,7 +30,7 @@
 		$var = $_POST['ID'];
 		var_dump ($var);
 		echo "<\br>";
-		$_SESSION['eventID']	=	$_POST['ID'];
+		$_SESSION['eventID']	=	$var;
 		echo $_SESSION['eventID'];
 	}
 	else{
