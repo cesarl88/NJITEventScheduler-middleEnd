@@ -114,7 +114,7 @@
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
 				if(isset($eventID)){
 					$event = getEventByID($eventID);
-					var_dump($event);
+					return $event;
 					
 					#Format Start Date and End Date with GoogleAPI specifications 
 					#Sample: "2015-05-28T17:00:00Z"
@@ -132,7 +132,7 @@
 					#var_dump( $result);
 				}
 				else{
-					echo "Not event found!";
+					return (echo "Not event found!");
 				}
 			}
 		
@@ -202,7 +202,7 @@
 	// Get the API client and construct the service object.
 	$client = getClient();
 	$service = new Google_Service_Calendar($client);
-	
+	var_dump($service);
 	
 	
 	
