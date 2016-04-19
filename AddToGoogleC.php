@@ -100,6 +100,7 @@
 			//For loging out.
 			if (isset($_GET['logout'])) {
 				unset($_SESSION['token']);
+				unset($_SESSION['eventID']);
 			}
 
 			// Step 2: The user accepted your access now you need to exchange it.
@@ -114,7 +115,7 @@
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
 			 if (!isset($_SESSION['token'])) {
-				echo "PartOne".$_SESSION['token'];
+				#echo "PartOne".$_SESSION['token'];
 				$authUrl = $client->createAuthUrl();
 				print "<a class='login' href='$authUrl'>Connect Me!</a>";
 			 }    
@@ -123,15 +124,17 @@
 			if (isset($_SESSION['token'])) {
 				echo "</br>";
 				echo $_SESSION['eventID'];
-				echo "Part3".$_SESSION['token'];
+				#echo "Part3".$_SESSION['token'];
 				
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
 				
 				
-				
 				if(isset($_SESSION['eventID'])){
-					$event = getEventByID($_SESSION['eventID']);
+					$eventID = $_SESSION['eventID'];
+					
+					var_dump($eventID);
+					$event = getEventByID($eventID);
 					var_dump($event) ;
 					
 					#Format Start Date and End Date with GoogleAPI specifications 
