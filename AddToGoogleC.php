@@ -115,12 +115,14 @@
 
 			 // Step 3: We have access we can now create our service
 			if (isset($_SESSION['token'])) {
+				echo "</br>";
+				echo $_SESSION['eventID'];
 				echo "Part3".$_SESSION['token'];
+				
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
 				
-				echo "</br>";
-				echo $_SESSION['eventID'];
+				
 				
 				if(isset($_SESSION['eventID'])){
 					$event = getEventByID($_SESSION['eventID']);
