@@ -93,7 +93,7 @@
 	  $client->setScopes(SCOPES);
 	  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
 	  $client->setRedirectUri(REDIRECT_URI);
-	  $client->setAccessType('offline');
+	  #$client->setAccessType('offline');
 
 	  // Load previously authorized credentials from a file.
 		$credentialsPath = expandHomeDirectory(CREDENTIALS_PATH);
@@ -109,12 +109,12 @@
 
 			// Step 2: The user accepted your access now you need to exchange it.
 			if (isset($_GET['code'])) {
-				echo "PartTwo".$_GET['code'];
+				echo "PartTwo".$_GET['token'];
 				echo "PartTwoSe".$_SESSION['eventID'];
 				$client->authenticate($_GET['code']);  
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
-				header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+				#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 			 }
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
@@ -131,7 +131,7 @@
 				$eventID = $tmpVar;
 				echo $eventID;
 				echo "</br>";
-				echo "Part3".$_SESSION['token'];
+				echo "Part3".$_SESSION['eventID'];
 				
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
