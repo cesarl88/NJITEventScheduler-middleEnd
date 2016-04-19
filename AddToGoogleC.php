@@ -25,7 +25,7 @@
 	#$EndDate     	=	$_POST['EndDate'];
 	#$startTime   	=	$_POST['startTime'];
 	#$endTime     	=	$_POST['endTime'];
-	$_SESSION['eventID']	=	$_POST['eventID'];
+	$_SESSION['eventID']	=	$_POST['ID'];
 	
 	//This function is supposed to get all event details
 	function getEventByID($ID){
