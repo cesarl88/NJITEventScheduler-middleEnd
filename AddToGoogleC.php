@@ -96,21 +96,24 @@
 
 			// Step 2: The user accepted your access now you need to exchange it.
 			if (isset($_GET['code'])) {
+				echo "PartTwo".$_GET['code'];
+				echo "PartTwoSe".$_SESSION['token'];
 				$client->authenticate($_GET['code']);  
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
 				header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-				echo $_SESSION['token'];
 			 }
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
 			 if (!isset($_SESSION['token'])) {
+				echo "PartOne".$_SESSION['token'];
 				$authUrl = $client->createAuthUrl();
 				print "<a class='login' href='$authUrl'>Connect Me!</a>";
 			 }    
 
 			 // Step 3: We have access we can now create our service
 			if (isset($_SESSION['token'])) {
+				echo "Part3".$_SESSION['token'];
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
 				if(isset($eventID)){
