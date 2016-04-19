@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);	
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);	
 
 	include_once('formatDate.php');
 	
@@ -28,10 +28,10 @@
 	
 	if(isset($_POST['ID'])){
 		$var = $_POST['ID'];
-		var_dump ($var);
-		echo "<\br>";
+		#var_dump ($var);
+		#echo "<\br>";
 		$_SESSION['eventID']	=	$var;
-		echo $_SESSION['eventID'];
+		echo "SessionEventID".$_SESSION['eventID'];
 	}
 	else{
 		echo "AfterInitialPost".$_SESSION['eventID'];
@@ -109,8 +109,8 @@
 
 			// Step 2: The user accepted your access now you need to exchange it.
 			if (isset($_GET['code'])) {
-				#echo "PartTwo".$_GET['code'];
-				#echo "PartTwoSe".$_SESSION['token'];
+				echo "PartTwo".$_GET['code'];
+				echo "PartTwoSe".$_SESSION['eventID'];
 				$client->authenticate($_GET['code']);  
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
@@ -126,10 +126,12 @@
 
 			 // Step 3: We have access we can now create our service
 			if (isset($_SESSION['token'])) {
+				$tmpVar = $_SESSION['eventID'];
+				echo $tmpVar."</br>";
+				$eventID = $tmpVar;
+				echo $eventID;
 				echo "</br>";
-				$eventID = $_SESSION['eventID'];
-				echo $_SESSION['eventID'];
-				#echo "Part3".$_SESSION['token'];
+				echo "Part3".$_SESSION['token'];
 				
 				$client->setAccessToken($_SESSION['token']);
 				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
@@ -156,6 +158,9 @@
 					#call function
 					#$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $endD, $linkSite);
 					#var_dump( $result);
+				}
+				elseif(!isset($_SESSION['eventID'])){
+				
 				}
 				else{
 					echo "Not event found!";
