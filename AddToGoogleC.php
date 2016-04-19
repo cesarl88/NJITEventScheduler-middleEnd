@@ -119,7 +119,6 @@
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
 			 if (!isset($_SESSION['token'])) {
-				echo $_SESSION['eventID'];
 				#echo "PartOne".$_SESSION['token'];
 				$authUrl = $client->createAuthUrl();
 				print "<a class='login' href='$authUrl'>Connect Me!</a>";
