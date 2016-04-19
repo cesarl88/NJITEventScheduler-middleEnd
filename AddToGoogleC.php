@@ -12,16 +12,17 @@
 	define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
 	define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 	define('SCOPES', implode(' ', array(Google_Service_Calendar::CALENDAR)));
-	
+	define('REDIRECT_URI', 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php');
+
 	
 	//Post variables
-	$title			=	$_POST['title'];
-	$Place			=	$_POST['Place'];
-	$description	=	$_POST['description'];
-	$startDate   	=	$_POST['startDate'];
-	$EndDate     	=	$_POST['EndDate'];
-	$startTime   	=	$_POST['startTime'];
-	$endTime     	=	$_POST['endTime'];
+	#$title			=	$_POST['title'];
+	#$Place			=	$_POST['Place'];
+	#$description	=	$_POST['description'];
+	#$startDate   	=	$_POST['startDate'];
+	#$EndDate     	=	$_POST['EndDate'];
+	#$startTime   	=	$_POST['startTime'];
+	#$endTime     	=	$_POST['endTime'];
 	$eventID			=	$_POST['eventID'];
 	
 	//This function is supposed to get all event details
@@ -86,6 +87,7 @@
 		 $accessToken = file_get_contents($credentialsPath);
 	  } 
 	  else {
+		echo CREDENTIALS_PATH;
 		 // Request authorization from the user.
 		$authUrl = $client->createAuthUrl(); 
 		print "<a class='login' href='$authUrl'>Connect Me!</a>";
@@ -106,6 +108,8 @@
 	  }
 	  #return $client;
 	
+	
+		//Need to segregate call
 		if(isset($eventID)){
 			$event = getEventByID($eventID);
 			var_dump($event);
