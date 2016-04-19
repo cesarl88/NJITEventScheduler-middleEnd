@@ -163,7 +163,7 @@
 					echo "Not event found!";
 				}
 				else{
-					echo json_encode('Reply' => -1) ;
+					echo "-1";
 				}
 			}
 		
