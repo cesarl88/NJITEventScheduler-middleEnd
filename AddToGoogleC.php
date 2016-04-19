@@ -33,6 +33,10 @@
 		$_SESSION['eventID']	=	$_POST['ID'];
 		echo $_SESSION['eventID'];
 	}
+	else{
+		echo "AfterInitialPost".$_SESSION['eventID'];
+		echo "<\br>";
+	}
 	
 	//This function is supposed to get all event details
 	function getEventByID($ID){
@@ -115,6 +119,7 @@
 
 			 // Step 1:  The user has not authenticated we give them a link to login    
 			 if (!isset($_SESSION['token'])) {
+				echo $_SESSION['eventID'];
 				#echo "PartOne".$_SESSION['token'];
 				$authUrl = $client->createAuthUrl();
 				print "<a class='login' href='$authUrl'>Connect Me!</a>";
@@ -123,6 +128,7 @@
 			 // Step 3: We have access we can now create our service
 			if (isset($_SESSION['token'])) {
 				echo "</br>";
+				$eventID = $_SESSION['eventID'];
 				echo $_SESSION['eventID'];
 				#echo "Part3".$_SESSION['token'];
 				
@@ -131,7 +137,7 @@
 				
 				
 				if(isset($_SESSION['eventID'])){
-					$eventID = $_SESSION['eventID'];
+					
 					
 					var_dump($eventID);
 					$event = getEventByID($eventID);
