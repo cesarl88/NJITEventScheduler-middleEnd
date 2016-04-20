@@ -55,6 +55,11 @@
 		#return $getEventReply;	#review reply from DB	
 		var_dump($getEventReply);
 	#}
+	echo "</br>";
+	var_dump(CURLOPT_URL);
+	echo "</br>";
+	var_dump(CURLOPT_POSTFIELDS);
+	
 	
 	
 	$varA = authenticate();
