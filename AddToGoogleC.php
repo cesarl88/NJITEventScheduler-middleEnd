@@ -15,6 +15,7 @@
 	define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 	define('SCOPES', implode(' ', array(Google_Service_Calendar::CALENDAR)));
 	define('REDIRECT_URI', 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php');
+	#define('REDIRECT_URI', 'urn:ietf:wg:oauth:2.0:oob');
 	define('CLIENT_ID', '730791246182-sjnjd2b3sf6d3mhemda24eukho3jtien.apps.googleusercontent.com');
 
 	//This function is supposed to get all event details
@@ -75,7 +76,7 @@
 	$client->setScopes(SCOPES);
 	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
 	$client->setAccessType('offline');
-	#$client->setRedirect();
+	$client->setRedirectUri(REDIRECT_URI);
 	
 	$service = new Google_Service_Calendar($client);
 	
@@ -87,7 +88,7 @@
 	if (isset($_GET['code'])) {
 		$client->authenticate($_GET['code']);
 		$_SESSION['token'] = $client->getAccessToken();
-		$redirect = 'https://web.njit.edu/~jar63/CS490/AddToGoogleC.php';
+		$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
 		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
 	
