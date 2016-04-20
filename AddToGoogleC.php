@@ -102,17 +102,20 @@
 		} 
 		else {
 			//For loging out.
-			if (isset($_GET['logout'])) {
+			#if (isset($_GET['logout'])) {
+			if (isset($_POST['logout'])) {
 				unset($_SESSION['token']);
 				unset($_SESSION['eventID']);
 			}
 
 			// Step 2: The user accepted your access now you need to exchange it.
-			if (isset($_GET['code'])) {
+			#if (isset($_GET['code'])) {
+			if (isset($_POST['code'])) {
 				session_start();
 				#echo "PartTwo".$_GET['token'];
 				echo "PartTwoSe".$_SESSION['eventID'];
-				$client->authenticate($_GET['code']);  
+				#$client->authenticate($_GET['code']);
+				$client->authenticate($_POST['code']);
 				$_SESSION['token'] = $client->getAccessToken();
 				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
 				#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
