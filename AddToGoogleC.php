@@ -31,15 +31,15 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
-	echo "</br>";
-	echo SCOPES;
-	echo "</br>";
-	echo     'urn:ietf:wg:oauth:2.0:oob';
-	echo "</br>";
-	echo     'code';
-	echo "</br>";
-	echo     CLIENT_ID;
-	echo "</br>";
+	// echo "</br>";
+	// echo SCOPES;
+	// echo "</br>";
+	// echo     'urn:ietf:wg:oauth:2.0:oob';
+	// echo "</br>";
+	// echo     'code';
+	// echo "</br>";
+	// echo     CLIENT_ID;
+	// echo "</br>";
 	
 	#function authenticate(){
 		$ch = curl_init();
@@ -51,8 +51,6 @@
 																						"client_id"			=> CLIENT_ID,
 																				)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		echo "</br>";
-		var_dump($ch);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
 		#echo "<br/>";
