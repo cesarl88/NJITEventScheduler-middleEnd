@@ -32,6 +32,12 @@
 	}
 	
 	
+	echo SCOPES;
+	echo     'urn:ietf:wg:oauth:2.0:oob';
+	echo     'code';
+	echo     CLIENT_ID;
+	
+	
 	#function authenticate(){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
