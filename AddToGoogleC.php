@@ -10,11 +10,12 @@
 	require_once __DIR__ . '/vendor/autoload.php';
 	
 	//Definition of variables from Google API
-	define('APPLICATION_NAME', 'Google Calendar API PHP Quickstart');
-	define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
+	#define('APPLICATION_NAME', 'Google Calendar API PHP Quickstart');
+	#define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
 	define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 	define('SCOPES', implode(' ', array(Google_Service_Calendar::CALENDAR)));
 	define('REDIRECT_URI', 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php');
+	define('CLIENT_ID', '730791246182-sjnjd2b3sf6d3mhemda24eukho3jtien.apps.googleusercontent.com');
 
 	//This function is supposed to get all event details
 	function getEventByID($ID){
@@ -29,7 +30,26 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
-
+	
+	function authenticate(){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+																						"redirect_uri" 	=> "urn:ietf:wg:oauth:2.0:oob",
+																						"response_type"	=> "code",
+																						"client_id"			=> CLIENT_ID,
+																				)));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		#echo "<br/>";
+		#$value = (json_decode($getEventReply,true));
+		return $getEventReply;	#review reply from DB	
+	}
+	
+	
+	
+	
 	//Post variables
 	#$title			=	$_POST['title'];
 	#$Place			=	$_POST['Place'];
@@ -54,7 +74,8 @@
 	$client = new Google_Client();
 	$client->setScopes(SCOPES);
 	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
-	#$client->setAccessType('offline');
+	$client->setAccessType('offline');
+	#$client->setRedirect();
 	
 	$service = new Google_Service_Calendar($client);
 	
@@ -67,7 +88,7 @@
 		$client->authenticate($_GET['code']);
 		$_SESSION['token'] = $client->getAccessToken();
 		$redirect = 'https://web.njit.edu/~jar63/CS490/AddToGoogleC.php';
-		header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
 	
 	if (isset($_SESSION['token'])) {
@@ -124,8 +145,9 @@
 	}
 	
 ?>
+
 <div class="box">
-  <div class="request">
+<div class="request">
 <?php 
 if (isset($authUrl)) {
   echo "<a class='login' href='" . $authUrl . "'>Connect Me!</a>";
@@ -134,13 +156,3 @@ if (isset($authUrl)) {
   </div>
 
   <div class="shortened">
-<?php 
-if (isset($result) && $result) {
-  var_dump($result->title);
-  var_dump($result2->title);
-}
-?>
-  </div>
-</div>
-<?php
-echo pageFooter(__FILE__);
