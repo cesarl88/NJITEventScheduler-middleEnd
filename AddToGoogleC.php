@@ -36,6 +36,7 @@
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+																						"scope"				=> SCOPES,
 																						"redirect_uri" 	=> "urn:ietf:wg:oauth:2.0:oob",
 																						"response_type"	=> "code",
 																						"client_id"			=> CLIENT_ID,
@@ -49,7 +50,8 @@
 	}
 	
 	
-	
+	$varA = authenticate();
+	var_dump ($varA);
 	
 	//Post variables
 	#$title			=	$_POST['title'];
