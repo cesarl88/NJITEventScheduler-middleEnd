@@ -66,7 +66,7 @@
 	if (isset($_GET['code'])) {
 		$client->authenticate($_GET['code']);
 		$_SESSION['token'] = $client->getAccessToken();
-		$redirect = ['https://web.njit.edu/~jar63/CS490/AddToGoogleC.php'];
+		$redirect = 'https://web.njit.edu/~jar63/CS490/AddToGoogleC.php';
 		header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
 	
