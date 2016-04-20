@@ -45,7 +45,7 @@
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-																						"scope"				=> SCOPES,
+																						"scope"				=> 'https://www.googleapis.com/auth/calendar',
 																						"redirect_uri" 	=> 'urn:ietf:wg:oauth:2.0:oob',
 																						"response_type"	=> 'code',
 																						"client_id"			=> CLIENT_ID,
