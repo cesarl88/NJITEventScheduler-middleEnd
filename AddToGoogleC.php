@@ -56,10 +56,8 @@
 		var_dump($getEventReply);
 	#}
 	echo "</br>";
-	var_dump(CURLOPT_URL);
-	echo "</br>";
-	var_dump(CURLOPT_POSTFIELDS);
 	
+	var_dump($ch);
 	
 	
 	$varA = authenticate();
