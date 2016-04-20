@@ -16,7 +16,20 @@
 	define('SCOPES', implode(' ', array(Google_Service_Calendar::CALENDAR)));
 	define('REDIRECT_URI', 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php');
 
+	//This function is supposed to get all event details
+	function getEventByID($ID){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~jsr24/CS490/getEventByID.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		#echo "<br/>";
+		#$value = (json_decode($getEventReply,true));
+		return $getEventReply;	#review reply from DB	
+	}
 	
+
 	//Post variables
 	#$title			=	$_POST['title'];
 	#$Place			=	$_POST['Place'];
@@ -38,27 +51,56 @@
 		echo "<\br>";
 	}
 	
-	//This function is supposed to get all event details
-	function getEventByID($ID){
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~jsr24/CS490/getEventByID.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$getEventReply = curl_exec($ch);
-		curl_close($ch);
-		#echo "<br/>";
-		#$value = (json_decode($getEventReply,true));
-		return $getEventReply;	#review reply from DB	
+	$client = new Google_Client();
+	$client->setScopes(SCOPES);
+	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
+	#$client->setAccessType('offline');
+	
+	$service = new Google_Service_Calendar($client);
+	
+	if (isset($_REQUEST['logout'])) {
+		echo "logOut<\br>";
+		unset($_SESSION['token']);
+	}
+		
+	if (isset($_GET['code'])) {
+		$client->authenticate($_GET['code']);
+		$_SESSION['token'] = $client->getAccessToken();
+		$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+		header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
 	
-	//This function is the main function called in order to generate the event on the user Calendar
-	function addGoogleCalendarEvent($title, $Place, $description, $startD, $EndD, $linkSite){
+	if (isset($_SESSION['token'])) {
+		$client->setAccessToken($_SESSION['token']);
+		if ($client->isAccessTokenExpired()) {
+			unset($_SESSION['token']);
+		}
+	}
+	else {
+		$authUrl = $client->createAuthUrl();
+	}
+	
+	//If authentication is complete perform action
+	if ($client->getAccessToken()) {
+		
+		echo $_SESSION['eventID'];
+		$event = $_SESSION['eventID'];
+		
+		#call Function to get Event details
+		$eventDetails = getEventByID($event);
+		var_dump($eventDetails);
+		
+		#calll function to format Dates
+		#$startD 	=	formatDate($startDate,$startTime);
+		#$endD		=	formatDate($EndDate, $endTime);
+		
+		
+		
 		$event = new Google_Service_Calendar_Event(
 			array(
 			  'summary' 		=> $title,
 			  'location' 		=> $Place,
 			  'description' 	=> $description,
-			  #'htmlLink'		=> $linkSite,
 			  'start' => array(
 				 'dateTime' => $startD,
 				 'timeZone' => 'America/New_York',
@@ -75,181 +117,30 @@
 			  ),
 		));
 		
-		#print_r($event);
-		#echo </br>;
-		#var_dump($event);
-		
-		#return $event;
 		$calendarId = 'primary';
-		$event = $service->events->insert($calendarId, $event);
+		#$event = $service->events->insert($calendarId, $event);
 		printf('Event created: %s\n', $event->htmlLink);
-		}
-	
-	
-	//Google API function to setup and authenticate user to have access to Calendar
-	#function getClient() {
-	  $client = new Google_Client();
-	  #$client->setApplicationName(APPLICATION_NAME);
-	  $client->setScopes(SCOPES);
-	  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
-	  $client->setRedirectUri(REDIRECT_URI);
-	  #$client->setAccessType('offline');
-
-	  // Load previously authorized credentials from a file.
-		$credentialsPath = expandHomeDirectory(CREDENTIALS_PATH);
-		if (file_exists($credentialsPath)) {
-			$accessToken = file_get_contents($credentialsPath);
-		} 
-		else {
-			//For loging out.
-			if (isset($_GET['logout'])) {
-			#if (isset($_POST['logout'])) {
-				unset($_SESSION['token']);
-				unset($_SESSION['eventID']);
-			}
-
-			// Step 2: The user accepted your access now you need to exchange it.
-			if (isset($_GET['code'])) {
-			#if (isset($_POST['code'])) {
-				session_start();
-				#echo "PartTwo".$_GET['token'];
-				echo "PartTwoSe".$_SESSION['eventID'];
-				$client->authenticate($_GET['code']);
-				#$client->authenticate($_POST['code']);
-				$_SESSION['token'] = $client->getAccessToken();
-				$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
-				#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-			 }
-
-			 // Step 1:  The user has not authenticated we give them a link to login    
-			 if (!isset($_SESSION['token'])) {
-				session_start();
-				#echo "PartOne".$_SESSION['token'];
-				$authUrl = $client->createAuthUrl();
-				print "<a class='login' href='$authUrl'>Connect Me!</a>";
-			 }    
-
-			 // Step 3: We have access we can now create our service
-			if (isset($_SESSION['token'])) {
-				session_start();
-				$tmpVar = $_SESSION['eventID'];
-				echo $tmpVar."</br>";
-				$eventID = $tmpVar;
-				echo $eventID;
-				echo "</br>";
-				echo "Part3".$_SESSION['eventID'];
-				
-				$client->setAccessToken($_SESSION['token']);
-				print "<a class='logout' href='href='$authUrl?logout=1'>LogOut</a><br>";	
-				
-				
-				if(isset($_SESSION['eventID'])){
-					
-					
-					var_dump($eventID);
-					$event = getEventByID($eventID);
-					var_dump($event) ;
-					
-					#Format Start Date and End Date with GoogleAPI specifications 
-					#Sample: "2015-05-28T17:00:00Z"
-					#$startD 	=	formatDate($startDate,$startTime);
-					#$endD		=	formatDate($EndDate, $endTime);
-					
-					#Create link to embed on GoogleCalendar
-					#$linkSite = $title."<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
-					#possible solution
-					#var form = '<form name="'+frmName+'" method="post" action="'+url'">'+pe+'</form>';
-				
-					#echo $linkSite;
-					#call function
-					#$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $endD, $linkSite);
-					#var_dump( $result);
-				}
-				elseif(!isset($_SESSION['eventID'])){
-					echo "Not event found!";
-				}
-				else{
-					echo "-1";
-				}
-			}
 		
-		}
-		
-		
-		// Request authorization from the user.
-		#$authUrl = $client->createAuthUrl(); 
-		#print "<a class='login' href='$authUrl'>Connect Me!</a>";
-		 
-		 
-	#	 // Store the credentials to disk.
-	#	 if(!file_exists(dirname($credentialsPath))) {
-	#		mkdir(dirname($credentialsPath), 0700, true);
-	#	 }
-	#	 file_put_contents($credentialsPath, $accessToken);
-	#  }
-	#  $client->setAccessToken($accessToken);
-   #
-	#  // Refresh the token if it's expired.
-	#  if ($client->isAccessTokenExpired()) {
-	#	 $client->refreshToken($client->getRefreshToken());
-	#	 file_put_contents($credentialsPath, $client->getAccessToken());
-	#  }
-	  #return $client;
-	
-	
-		//Need to segregate call
-		#if(isset($eventID)){
-		#	$event = getEventByID($eventID);
-		#	var_dump($event);
-		#	
-		#	#Format Start Date and End Date with GoogleAPI specifications 
-		#	#Sample: "2015-05-28T17:00:00Z"
-		#	$startD 	=	formatDate($startDate,$startTime);
-		#	$endD		=	formatDate($EndDate, $endTime);
-		#	
-		#	#Create link to embed on GoogleCalendar
-		#	$linkSite = $title."<\"method=\"POST\" action=\"getEventByID.php\" name=\"ID\" value=\"".$eventID.">";
-		#	#possible solution
-		#	#var form = '<form name="'+frmName+'" method="post" action="'+url'">'+pe+'</form>';
-		#
-		#	#echo $linkSite;
-		#	#call function
-		#	$result = addGoogleCalendarEvent($title, $Place, $description, $startD, $endD, $linkSite);
-		#	var_dump( $result);
-		#}
-		#else{
-		#	echo "Not event found!";
-		#}
-	#}
-	
-	/**
-	 * Expands the home directory alias '~' to the full path.
-	 * @param string $path the path to expand.
-	 * @return string the expanded path.
-	 */
-	function expandHomeDirectory($path) {
-	  $homeDirectory = getenv('HOME');
-	  if (empty($homeDirectory)) {
-		 $homeDirectory = getenv("HOMEDRIVE") . getenv("HOMEPATH");
-	  }
-	  return str_replace('~', realpath($homeDirectory), $path);
 	}
-
-	
-	// Get the API client and construct the service object.
-	#$client = getClient();
-	#$service = new Google_Service_Calendar($client);
-	#var_dump($service);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 ?>
+<div class="box">
+  <div class="request">
+<?php 
+if (isset($authUrl)) {
+  echo "<a class='login' href='" . $authUrl . "'>Connect Me!</a>";
+}
+?>
+  </div>
+
+  <div class="shortened">
+<?php 
+if (isset($result) && $result) {
+  var_dump($result->title);
+  var_dump($result2->title);
+}
+?>
+  </div>
+</div>
+<?php
+echo pageFooter(__FILE__);
