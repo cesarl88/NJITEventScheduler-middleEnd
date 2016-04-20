@@ -32,7 +32,7 @@
 	}
 	
 	
-	function authenticate(){
+	#function authenticate(){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
@@ -46,8 +46,9 @@
 		curl_close($ch);
 		#echo "<br/>";
 		#$value = (json_decode($getEventReply,true));
-		return $getEventReply;	#review reply from DB	
-	}
+		#return $getEventReply;	#review reply from DB	
+		var_dump($getEventReply);
+	#}
 	
 	
 	$varA = authenticate();
