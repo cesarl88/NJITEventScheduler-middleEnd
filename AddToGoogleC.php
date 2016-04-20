@@ -37,8 +37,8 @@
 		curl_setopt($ch, CURLOPT_URL, "https://accounts.google.com/o/oauth2/v2/auth"); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
 																						"scope"				=> SCOPES,
-																						"redirect_uri" 	=> "urn:ietf:wg:oauth:2.0:oob",
-																						"response_type"	=> "code",
+																						"redirect_uri" 	=> 'urn:ietf:wg:oauth:2.0:oob',
+																						"response_type"	=> 'code',
 																						"client_id"			=> CLIENT_ID,
 																				)));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -54,99 +54,99 @@
 	$varA = authenticate();
 	var_dump ($varA);
 	
-	//Post variables
-	#$title			=	$_POST['title'];
-	#$Place			=	$_POST['Place'];
-	#$description	=	$_POST['description'];
-	#$startDate   	=	$_POST['startDate'];
-	#$EndDate     	=	$_POST['EndDate'];
-	#$startTime   	=	$_POST['startTime'];
-	#$endTime     	=	$_POST['endTime'];
-	
-	if(isset($_POST['ID'])){
-		$var = $_POST['ID'];
-		#var_dump ($var);
-		#echo "<\br>";
-		$_SESSION['eventID']	=	$var;
-		echo "SessionEventID".$_SESSION['eventID'];
-	}
-	else{
-		echo "AfterInitialPost".$_SESSION['eventID'];
-		echo "<\br>";
-	}
-	
-	$client = new Google_Client();
-	$client->setScopes(SCOPES);
-	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
-	$client->setAccessType('offline');
-	$client->setRedirectUri(REDIRECT_URI);
-	
-	$service = new Google_Service_Calendar($client);
-	
-	if (isset($_REQUEST['logout'])) {
-		echo "logOut<\br>";
-		unset($_SESSION['token']);
-	}
-		
-	if (isset($_GET['code'])) {
-		$client->authenticate($_GET['code']);
-		$_SESSION['token'] = $client->getAccessToken();
-		$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
-		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-	}
-	
-	if (isset($_SESSION['token'])) {
-		$client->setAccessToken($_SESSION['token']);
-		if ($client->isAccessTokenExpired()) {
-			unset($_SESSION['token']);
-		}
-	}
-	else {
-		$authUrl = $client->createAuthUrl();
-	}
-	
-	//If authentication is complete perform action
-	if ($client->getAccessToken()) {
-		
-		echo $_SESSION['eventID'];
-		$event = $_SESSION['eventID'];
-		
-		#call Function to get Event details
-		$eventDetails = getEventByID($event);
-		var_dump($eventDetails);
-		
-		#calll function to format Dates
-		#$startD 	=	formatDate($startDate,$startTime);
-		#$endD		=	formatDate($EndDate, $endTime);
-		
-		
-		
-		$event = new Google_Service_Calendar_Event(
-			array(
-			  'summary' 		=> $title,
-			  'location' 		=> $Place,
-			  'description' 	=> $description,
-			  'start' => array(
-				 'dateTime' => $startD,
-				 'timeZone' => 'America/New_York',
-			  ),
-			  'end' => array(
-				 'dateTime' => $EndD,
-				 'timeZone' => 'America/New_York',
-			  ),
-			  'reminders' => array(
-					'useDefault' => FALSE,
-					'overrides' => array(
-							array('method' => 'email', 'minutes' => 24 * 60),
-				 ),
-			  ),
-		));
-		
-		$calendarId = 'primary';
-		#$event = $service->events->insert($calendarId, $event);
-		printf('Event created: %s\n', $event->htmlLink);
-		
-	}
+#	//Post variables
+#	#$title			=	$_POST['title'];
+#	#$Place			=	$_POST['Place'];
+#	#$description	=	$_POST['description'];
+#	#$startDate   	=	$_POST['startDate'];
+#	#$EndDate     	=	$_POST['EndDate'];
+#	#$startTime   	=	$_POST['startTime'];
+#	#$endTime     	=	$_POST['endTime'];
+#	
+#	if(isset($_POST['ID'])){
+#		$var = $_POST['ID'];
+#		#var_dump ($var);
+#		#echo "<\br>";
+#		$_SESSION['eventID']	=	$var;
+#		echo "SessionEventID".$_SESSION['eventID'];
+#	}
+#	else{
+#		echo "AfterInitialPost".$_SESSION['eventID'];
+#		echo "<\br>";
+#	}
+#	
+#	$client = new Google_Client();
+#	$client->setScopes(SCOPES);
+#	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
+#	$client->setAccessType('offline');
+#	$client->setRedirectUri(REDIRECT_URI);
+#	
+#	$service = new Google_Service_Calendar($client);
+#	
+#	if (isset($_REQUEST['logout'])) {
+#		echo "logOut<\br>";
+#		unset($_SESSION['token']);
+#	}
+#		
+#	if (isset($_GET['code'])) {
+#		$client->authenticate($_GET['code']);
+#		$_SESSION['token'] = $client->getAccessToken();
+#		$redirect = 'https://web.njit.edu/~jsr24/CS490/AddToGoogleC.php';
+#		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+#	}
+#	
+#	if (isset($_SESSION['token'])) {
+#		$client->setAccessToken($_SESSION['token']);
+#		if ($client->isAccessTokenExpired()) {
+#			unset($_SESSION['token']);
+#		}
+#	}
+#	else {
+#		$authUrl = $client->createAuthUrl();
+#	}
+#	
+#	//If authentication is complete perform action
+#	if ($client->getAccessToken()) {
+#		
+#		echo $_SESSION['eventID'];
+#		$event = $_SESSION['eventID'];
+#		
+#		#call Function to get Event details
+#		$eventDetails = getEventByID($event);
+#		var_dump($eventDetails);
+#		
+#		#calll function to format Dates
+#		#$startD 	=	formatDate($startDate,$startTime);
+#		#$endD		=	formatDate($EndDate, $endTime);
+#		
+#		
+#		
+#		$event = new Google_Service_Calendar_Event(
+#			array(
+#			  'summary' 		=> $title,
+#			  'location' 		=> $Place,
+#			  'description' 	=> $description,
+#			  'start' => array(
+#				 'dateTime' => $startD,
+#				 'timeZone' => 'America/New_York',
+#			  ),
+#			  'end' => array(
+#				 'dateTime' => $EndD,
+#				 'timeZone' => 'America/New_York',
+#			  ),
+#			  'reminders' => array(
+#					'useDefault' => FALSE,
+#					'overrides' => array(
+#							array('method' => 'email', 'minutes' => 24 * 60),
+#				 ),
+#			  ),
+#		));
+#		
+#		$calendarId = 'primary';
+#		#$event = $service->events->insert($calendarId, $event);
+#		printf('Event created: %s\n', $event->htmlLink);
+#		
+#	}
 	
 ?>
 
