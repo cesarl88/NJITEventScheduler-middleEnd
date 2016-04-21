@@ -190,7 +190,10 @@
 	print_r ($_POST);
 	echo "</br>";
 	print_r ($_SESSION);
-	
+	echo "</br>";
+	if(isset($var)){
+		print_r ($var);
+	}
 	
 ?>
 
