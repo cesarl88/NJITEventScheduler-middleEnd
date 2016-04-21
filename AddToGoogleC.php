@@ -15,6 +15,11 @@
 	print_r ($_POST);
 	echo "</br>";
 	print_r ($_SESSION);
+	echo "</br>";
+	if(isset($var)){
+		print_r ($var);
+	}
+	
 	
 	
 	
@@ -77,6 +82,7 @@
 #	#$endTime     	=	$_POST['endTime'];
 #	
 	if(isset($_POST['ID'])){
+		global $var;
 		$var = $_POST['ID'];
 		#var_dump ($var);
 		#echo "</br>";
@@ -125,6 +131,7 @@
 	if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 		echo "AccessTokenExecutes</br>";
 		$client->setAccessToken($_SESSION['access_token']);
+		
 	} 
 	else {
 		echo "ElseAccessTokenExecutes</br>";
@@ -133,7 +140,7 @@
 	
 	//If authentication is complete perform action
 	if ($client->getAccessToken()) {
-		echo "I have been authenticated.Session EventID = ".$_SESSION['eventID'];
+		echo "I have been authenticated.Session EventID = ".$_SESSION['eventID']." OR ".$var;
 		#echo $_SESSION['eventID'];
 		
 		$event = $_SESSION['eventID'];
