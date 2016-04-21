@@ -1,5 +1,5 @@
 <?php
-	ini_set('session.save_path',getcwd(). '/tmp');
+	#ini_set('session.save_path',getcwd(). '/tmp');
 	session_start();
 	
 	#ini_set('display_errors', 'On');
