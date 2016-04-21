@@ -9,11 +9,11 @@
 	#print_r(get_defined_vars());
 	
 	
-	echo "Begin<\br>";
+	echo "Begin</br>";
 	print_r ($_GET);
-	echo "<\br>";
+	echo "</br>";
 	print_r ($_POST);
-	echo "<\br>";
+	echo "</br>";
 	print_r ($_SESSION);
 	
 	
@@ -79,7 +79,7 @@
 	if(isset($_POST['ID'])){
 		$var = $_POST['ID'];
 		#var_dump ($var);
-		#echo "<\br>";
+		#echo "</br>";
 		$_SESSION['eventID']	=	$_POST['ID'];
 		echo "SessionEventID".$_SESSION['eventID'];
 	}
@@ -89,7 +89,7 @@
 	
 	else{
 		echo "AfterInitialPost".$_SESSION['eventID'];
-		echo "<\br>";
+		echo "</br>";
 	}
 	
 	$client = new Google_Client();
@@ -102,7 +102,7 @@
 	$service = new Google_Service_Calendar($client);
 	
 	if (isset($_REQUEST['logout'])) {
-		echo "logOut<\br>";
+		echo "logOut</br>";
 		unset($_SESSION['access_token']);
 	}
 		
@@ -123,9 +123,11 @@
 	#}
 	
 	if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+		echo "AccessTokenExecutes</br>";
 		$client->setAccessToken($_SESSION['access_token']);
 	} 
 	else {
+		echo "ElseAccessTokenExecutes</br>";
 		$authUrl = $client->createAuthUrl();
 	}
 	
@@ -175,11 +177,11 @@
 	
 	#print_r(get_defined_vars());
 	
-	echo "End<\br>";
+	echo "End</br>";
 	print_r ($_GET);
-	echo "<\br>";
+	echo "</br>";
 	print_r ($_POST);
-	echo "<\br>";
+	echo "</br>";
 	print_r ($_SESSION);
 	
 	
