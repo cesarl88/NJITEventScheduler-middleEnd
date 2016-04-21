@@ -69,9 +69,13 @@
 		$var = $_POST['ID'];
 		#var_dump ($var);
 		#echo "<\br>";
-		$_SESSION['eventID']	=	$var;
+		$_SESSION['eventID']	=	$_POST['ID'];
 		echo "SessionEventID".$_SESSION['eventID'];
 	}
+	elseif(isset($_SESSION['eventID'])){
+		echo "SessionEventID is working";
+	}
+	
 	else{
 		echo "AfterInitialPost".$_SESSION['eventID'];
 		echo "<\br>";
