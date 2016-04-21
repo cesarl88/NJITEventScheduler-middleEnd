@@ -156,6 +156,9 @@
 		
 	}
 	
+	echo "<\br>VariablesAfterAssingment";
+	print_r(get_defined_vars());
+	
 ?>
 
 <div class="box">
