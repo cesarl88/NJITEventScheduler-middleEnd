@@ -110,7 +110,7 @@
 	
 	//If authentication is complete perform action
 	if ($client->getAccessToken()) {
-		echo "I have been authenticated";
+		echo "I have been authenticated.Session EventID = ".$_SESSION['eventID'];
 		#echo $_SESSION['eventID'];
 		
 		$event = $_SESSION['eventID'];
