@@ -6,7 +6,7 @@
 	#error_reporting(E_ALL);	
 
 	
-	print_r(get_defined_vars());
+	#print_r(get_defined_vars());
 	include_once('formatDate.php');
 	
 	//Dependency for Composer
@@ -97,9 +97,15 @@
 		
 	if (isset($_GET['code'])) {
 		$client->authenticate($_GET['code']);
+		echo "1_This executes";
 		$_SESSION['access_token'] = $client->getAccessToken();
+		echo "2_This executes";
+		
 		$redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+		echo "3_This executes";
+		
 		header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+		echo "4_This executes";
 		
 		#$redirect = 'https://web.njit.edu/~jsr24/CS490/val.php';
 		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
