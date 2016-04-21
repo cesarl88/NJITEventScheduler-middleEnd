@@ -7,6 +7,17 @@
 
 	
 	#print_r(get_defined_vars());
+	
+	
+	echo "Begin<\br>";
+	print_r ($_GET);
+	echo "<\br>";
+	print_r ($_POST);
+	echo "<\br>";
+	print_r ($_SESSION);
+	
+	
+	
 	include_once('formatDate.php');
 	
 	//Dependency for Composer
@@ -162,8 +173,15 @@
 		
 	}
 	
-	echo "<\br>VariablesAfterAssingment";
-	print_r(get_defined_vars());
+	#print_r(get_defined_vars());
+	
+	echo "End<\br>";
+	print_r ($_GET);
+	echo "<\br>";
+	print_r ($_POST);
+	echo "<\br>";
+	print_r ($_SESSION);
+	
 	
 ?>
 
