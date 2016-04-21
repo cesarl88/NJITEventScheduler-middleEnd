@@ -1,5 +1,5 @@
 <?php
-	ini_set('session.save_path',getcwd(). '/tmp');
+	
 	session_start();
 	
 	#ini_set('display_errors', 'On');
@@ -79,7 +79,7 @@
 	
 	$client = new Google_Client();
 	$client->setScopes(SCOPES);
-	#$client->setAuthConfigFile(CLIENT_SECRET_PATH);
+	$client->setAuthConfigFile(CLIENT_SECRET_PATH);
 	$client->setAccessType('offline');
 	$client->setRedirectUri(REDIRECT_URI);
 	$client->setClientId(CLIENT_ID);
@@ -94,11 +94,11 @@
 	if (isset($_GET['code'])) {
 		$client->authenticate($_GET['code']);
 		$_SESSION['access_token'] = $client->getAccessToken();
-		#$redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
-		
-		$redirect = 'https://web.njit.edu/~jsr24/CS490/val.php';
+		$redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 		header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+		
+		#$redirect = 'https://web.njit.edu/~jsr24/CS490/val.php';
+		#header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	}
 	
 	if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
