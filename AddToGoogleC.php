@@ -172,12 +172,12 @@
 		$val = $startDate."T".$startTime."Z";
 		$startD = new DateTime($val);
 		$startD = date_format($startD, 'Y-m-d\TH:i:s');
-		$startD2 = new DateTime($startD);
+		#$startD2 = new DateTime($startD);
 		
 		#var_dump(date_format($startD, "Y-m-d\TH:i:sP" ));
 		echo "</br>";
 		echo "</br>";
-		var_dump($startD2);
+		#var_dump($startD2);
 		echo "</br>";
 		echo "</br>";
 		#echo date_format($startD, 'Y-m-d\TH:i:sP');
