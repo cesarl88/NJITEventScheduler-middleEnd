@@ -9,12 +9,12 @@
 	#print_r(get_defined_vars());
 	
 	
-	echo "Begin</br>";
-	print_r ($_GET);
-	echo "</br>";
-	print_r ($_POST);
-	echo "</br>";
-	print_r ($_SESSION);
+	#echo "Begin</br>";
+	#print_r ($_GET);
+	#echo "</br>";
+	#print_r ($_POST);
+	#echo "</br>";
+	#print_r ($_SESSION);
 	
 	
 	
@@ -137,11 +137,16 @@
 		echo "I have been authenticated.Session EventID = ".$_SESSION['eventID'];
 		#echo $_SESSION['eventID'];
 		
-		$event = $_SESSION['eventID'];
+		
+		$event = 33624;
+		#$event = $_SESSION['eventID'];
 		
 		#call Function to get Event details
 		$eventDetails = getEventByID($event);
 		var_dump($eventDetails);
+		
+		
+		
 		
 		#calll function to format Dates
 		#$startD 	=	formatDate($startDate,$startTime);
@@ -178,12 +183,12 @@
 	
 	#print_r(get_defined_vars());
 	
-	echo "End</br>";
-	print_r ($_GET);
-	echo "</br>";
-	print_r ($_POST);
-	echo "</br>";
-	print_r ($_SESSION);
+	#echo "End</br>";
+	#print_r ($_GET);
+	#echo "</br>";
+	#print_r ($_POST);
+	#echo "</br>";
+	#print_r ($_SESSION);
 	
 	
 ?>
