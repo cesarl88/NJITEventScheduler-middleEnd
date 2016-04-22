@@ -195,7 +195,7 @@
 			  ),
 		));
 		
-		var_dump($event);
+		#var_dump($event);
 		
 		$calendarId = 'primary';
 		$event = $service->events->insert($calendarId, $event);
