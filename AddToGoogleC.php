@@ -174,7 +174,7 @@
 		
 		var_dump($startD);
 		echo "</br>";
-		echo date_format($startD['date'], 'Y-m-d\TH:i:sP');
+		echo date_format($startD, 'Y-m-d\TH:i:sP');
 		
 		$val2 = $EndDate."T".$endTime;
 		$endD = new DateTime($val2);
@@ -183,7 +183,7 @@
 		
 		var_dump($endD);
 		echo "</br>";
-		echo date_format($endD['date'], 'Y-m-d\TH:i:sP');
+		echo date_format($endD, 'Y-m-d\TH:i:sP');
 		
 		
 		
