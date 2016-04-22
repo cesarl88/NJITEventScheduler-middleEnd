@@ -139,7 +139,7 @@
 		#echo $_SESSION['eventID'];
 		
 		
-		$eventID = '33441';
+		$eventID = '33454';
 		#$event = $_SESSION['eventID'];
 		
 		#call Function to get Event details
