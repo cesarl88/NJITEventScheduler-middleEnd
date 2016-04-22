@@ -33,13 +33,13 @@
 // #
 // $Val = formatDate($Date, $Time);
 // echo $Val;
-
+	date_default_timezone_set('America/New_York');
 	$val = "2016-04-21T12:00:00";
 	#$d2 = new DateTime($val);
 	#date_timezone_set($d2, timezone_open('America/New_York'));
 	
 	
-	$d3 = new DateTime($val, new DateTimeZone('America/New_York'));
+	$d3 = new DateTime($val);
 	var_dump($d3);
 
 	
