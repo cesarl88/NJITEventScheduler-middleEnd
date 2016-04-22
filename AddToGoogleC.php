@@ -211,8 +211,8 @@
 				 ),
 			  ),
 		));
-		
-		#var_dump($event);
+		echo "</br></br></br>";
+		var_dump($event);
 		
 		$calendarId = 'primary';
 		$event = $service->events->insert($calendarId, $event);
@@ -238,7 +238,7 @@
 <div class="request">
 <?php 
 if (isset($authUrl)) {
-  echo "<a class='login' href='" . $authUrl . "'>Connect Me!</a>";
+  echo "</br><a class='login' href='" . $authUrl . "'>Connect Me!</a>";
 }
 ?>
   </div>
