@@ -36,7 +36,8 @@
 
 	$val = "2016-04-21T12:00:00";
 	$d2 = new DateTime($val);
-	date_default_timezone_set("America/New_York");
+	date_timezone_set($d2, timezone_open('America/New_York'));
+	
 	var_dump($d2);
 
 
