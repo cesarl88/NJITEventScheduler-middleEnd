@@ -138,11 +138,11 @@
 		#echo $_SESSION['eventID'];
 		
 		
-		$event = '33441';
+		$eventID = '33441';
 		#$event = $_SESSION['eventID'];
 		
 		#call Function to get Event details
-		$eventDetails = getEventByID($event);
+		$eventDetails = getEventByID($eventID);
 		#var_dump($eventDetails);
 		
 		$eventArray = json_decode($eventDetails,true);
@@ -169,34 +169,36 @@
 		$startD 	=	formatDate($startDate,$startTime);
 		$endD		=	formatDate($EndDate, $endTime);
 		
-		echo "</br>";
-		var_dump($startD);
-		echo "</br>";
-		var_dump($endD);
+		#echo "</br>";
+		#var_dump($startD);
+		#echo "</br>";
+		#var_dump($endD);
 		
-		#$event = new Google_Service_Calendar_Event(
-		#	array(
-		#	  'summary' 		=> $title,
-		#	  'location' 		=> $Place,
-		#	  'description' 	=> $description,
-		#	  'start' => array(
-		#		 'dateTime' => $startD,
-		#		 'timeZone' => 'America/New_York',
-		#	  ),
-		#	  'end' => array(
-		#		 'dateTime' => $EndD,
-		#		 'timeZone' => 'America/New_York',
-		#	  ),
-		#	  'reminders' => array(
-		#			'useDefault' => FALSE,
-		#			'overrides' => array(
-		#					array('method' => 'email', 'minutes' => 24 * 60),
-		#		 ),
-		#	  ),
-		#));
-		#
+		$event = new Google_Service_Calendar_Event(
+			array(
+			  'summary' 		=> $title,
+			  'location' 		=> $Place,
+			  'description' 	=> $description,
+			  'start' => array(
+				 'dateTime' => $startD,
+				 'timeZone' => 'America/New_York',
+			  ),
+			  'end' => array(
+				 'dateTime' => $EndD,
+				 'timeZone' => 'America/New_York',
+			  ),
+			  'reminders' => array(
+					'useDefault' => FALSE,
+					'overrides' => array(
+							array('method' => 'email', 'minutes' => 24 * 60),
+				 ),
+			  ),
+		));
+		
+		var_dump($event);
+		
 		#$calendarId = 'primary';
-		##$event = $service->events->insert($calendarId, $event);
+		#$event = $service->events->insert($calendarId, $event);
 		#printf('Event created: %s\n', $event->htmlLink);
 		
 	}
