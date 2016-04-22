@@ -182,6 +182,8 @@
 		echo "</br>";
 		#echo date_format($startD, 'Y-m-d\TH:i:sP');
 		
+		date_default_timezone_set('America/New_York');
+		
 		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
 		date_format($endD, "Y-m-d\TH:i:s");
