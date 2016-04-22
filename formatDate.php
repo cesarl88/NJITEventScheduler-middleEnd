@@ -35,10 +35,15 @@
 // echo $Val;
 
 	$val = "2016-04-21T12:00:00";
-	$d2 = new DateTime($val);
-	date_timezone_set($d2, timezone_open('America/New_York'));
+	#$d2 = new DateTime($val);
+	#date_timezone_set($d2, timezone_open('America/New_York'));
 	
-	var_dump($d2);
+	
+	$d3 = new DateTime($val, new DateTimeZone('America/New_York'));
+	var_dump($d3);
+
+	
+	#var_dump($d2);
 
 
 ?>
