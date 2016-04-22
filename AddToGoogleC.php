@@ -184,7 +184,7 @@
 		
 		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
-		date_format($endD, "Y-m-d\TH:i:sP");
+		date_format($endD, "Y-m-d\TH:i:s");
 		
 		#date_format($date, 'Y-m-d H:i:s');
 		
