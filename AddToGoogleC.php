@@ -197,9 +197,9 @@
 		
 		var_dump($event);
 		
-		#$calendarId = 'primary';
-		#$event = $service->events->insert($calendarId, $event);
-		#printf('Event created: %s\n', $event->htmlLink);
+		$calendarId = 'primary';
+		$event = $service->events->insert($calendarId, $event);
+		printf('Event created: %s\n', $event->htmlLink);
 		
 	}
 	
