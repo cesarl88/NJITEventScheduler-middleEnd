@@ -203,11 +203,11 @@
 			  'description' 	=> $description,
 			  'start' => array(
 				 'dateTime' => $startD,
-				 'timeZone' => 'America/New_York',
+				 #'timeZone' => 'America/New_York',
 			  ),
 			  'end' => array(
 				 'dateTime' => $EndD,
-				 'timeZone' => 'America/New_York',
+				 #'timeZone' => 'America/New_York',
 			  ),
 			  'reminders' => array(
 					'useDefault' => FALSE,
