@@ -145,8 +145,21 @@
 		$eventDetails = getEventByID($event);
 		var_dump($eventDetails);
 		
+		$eventArray = json_decode($eventDetails,true);
 		
+		$title       		= 		$eventArray['Title'];
+		$Place       		= 		$eventArray['Place'];
+		$description      = 		$eventArray['Description'];
+		$startDate 			= 		$eventArray['startDate'];
+		$startTime			= 		$eventArray['startTime'];
+		$EndDate       	= 		$eventArray['EndDate'];
+		$endTime       	= 		$eventArray['endTime'];
+		$addToGoogle		= 		$eventArray['addToGoogle'];
 		
+		var_dump($startDate);
+		var_dump($startTime);
+		var_dump($EndDate);  
+		var_dump($endTime);  
 		
 		#calll function to format Dates
 		#$startD 	=	formatDate($startDate,$startTime);
