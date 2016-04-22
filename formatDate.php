@@ -19,7 +19,15 @@
 	$Date = $_POST['Date'];
 	$Time = $_POST['Time'];
 	#
-	$Val = formatDate($Date, $Time);
-	echo $Val;
+	
+	$val = $Date."T".$Time."Z";
+	#$val = "2016-04-21T12:00:00Z";
+	
+	$d2 = new DateTime($val);
+	#var_dump($d2);
+	echo $d2;
+	
+	#$Val = formatDate($Date, $Time);
+	#echo $Val;
 
 ?>
