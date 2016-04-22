@@ -169,10 +169,10 @@
 		$startD 	=	formatDate($startDate,$startTime);
 		$endD		=	formatDate($EndDate, $endTime);
 		
-		#echo "</br>";
-		#var_dump($startD);
-		#echo "</br>";
-		#var_dump($endD);
+		echo "</br>";
+		var_dump($startD);
+		echo "</br>";
+		var_dump($endD);
 		
 		$event = new Google_Service_Calendar_Event(
 			array(
