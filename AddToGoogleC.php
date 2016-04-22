@@ -18,9 +18,6 @@
 	#print_r ($_SESSION);
 	
 	
-	
-	include_once('formatDate.php');
-	
 	//Dependency for Composer
 	require_once __DIR__ . '/vendor/autoload.php';
 	
@@ -39,8 +36,6 @@
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
-		#echo "<br/>";
-		#$value = (json_decode($getEventReply,true));
 		return $getEventReply;	#review reply from DB	
 	}
 	
