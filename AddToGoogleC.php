@@ -10,12 +10,12 @@
 	#print_r(get_defined_vars());
 	
 	
-	#echo "Begin</br>";
-	#print_r ($_GET);
-	#echo "</br>";
-	#print_r ($_POST);
-	#echo "</br>";
-	#print_r ($_SESSION);
+	echo "Begin</br>GET";
+	print_r ($_GET);
+	echo "</br>POST";
+	print_r ($_POST);
+	echo "</br>SESSION";
+	print_r ($_SESSION);
 	
 	
 	//Dependency for Composer
@@ -168,12 +168,13 @@
 	
 	#print_r(get_defined_vars());
 	
-	#echo "End</br>";
-	#print_r ($_GET);
-	#echo "</br>";
-	#print_r ($_POST);
-	#echo "</br>";
-	#print_r ($_SESSION);
+	echo "End</br>GET";
+	print_r ($_GET);
+	echo "</br>POST";
+	print_r ($_POST);
+	echo "</br>SESSION";
+	print_r ($_SESSION);
+	
 	
 	
 ?>
