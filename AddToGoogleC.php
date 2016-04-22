@@ -146,6 +146,7 @@
 		#var_dump($eventDetails);
 		
 		$eventArray = json_decode($eventDetails,true);
+		$eventArray = $eventArray['Event'];
 		var_dump($eventArray);
 		
 		
