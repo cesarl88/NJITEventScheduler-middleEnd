@@ -3,8 +3,8 @@
 	session_start();
 	date_default_timezone_set('America/New_York');
 
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);	
+	#ini_set('display_errors', 'On');
+	#error_reporting(E_ALL);	
 
 	
 	#print_r(get_defined_vars());
@@ -169,17 +169,17 @@
 		
 		
 	
-		$val = $startDate."T".$startTime;
+		$val = $startDate."T".$startTime."Z";
 		$startD = new DateTime($val);
 		
 		var_dump($startD);
 		echo "</br>";
 		echo date_format($startD, 'Y-m-d\TH:i:sP');
 		
-		$val2 = $EndDate."T".$endTime;
+		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
 		
-		date_format($date, 'Y-m-d H:i:s');
+		#date_format($date, 'Y-m-d H:i:s');
 		
 		var_dump($endD);
 		echo "</br>";
