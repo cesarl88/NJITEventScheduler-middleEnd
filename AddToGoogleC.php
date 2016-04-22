@@ -235,7 +235,7 @@
 		$event = $service->events->insert($calendarId, $event);
 		
 		#printf('Event created: %s\n', $event->htmlLink);
-		echo "Event created".$event['htmlLink'];
+		echo "<a href=".$event['htmlLink'].">Event created</a>";
 		#echo "</br></br></br>";
 		#var_dump($event);
 	}
