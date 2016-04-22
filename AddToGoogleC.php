@@ -81,15 +81,15 @@
 		#var_dump ($var);
 		#echo "</br>";
 		$_SESSION['eventID']	=	$_POST['ID'];
-		echo "SessionEventID".$_SESSION['eventID'];
+		#echo "SessionEventID".$_SESSION['eventID'];
 	}
 	elseif(isset($_SESSION['eventID'])){
-		echo "SessionEventID is working";
+		#echo "SessionEventID is working";
 	}
 	
 	else{
-		echo "AfterInitialPost".$_SESSION['eventID'];
-		echo "</br>";
+		#echo "AfterInitialPost".$_SESSION['eventID'];
+		#echo "</br>";
 	}
 	
 	$client = new Google_Client();
@@ -108,12 +108,12 @@
 		
 	if (isset($_GET['code'])) {
 		$client->authenticate($_GET['code']);
-		echo "1_This executes";
+		#echo "1_This executes";
 		$_SESSION['access_token'] = $client->getAccessToken();
-		echo "2_This executes";
+		#echo "2_This executes";
 		
 		$redirect = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-		echo "3_This executes";
+		#echo "3_This executes";
 		
 	#	header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 	#	echo "4_This executes";
@@ -124,17 +124,17 @@
 	
 	#if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
-		echo "AccessTokenExecutes</br>";
+		#echo "AccessTokenExecutes</br>";
 		$client->setAccessToken($_SESSION['access_token']);
 	} 
 	else {
-		echo "AccessTokenExecutes</br>";
+		#echo "AccessTokenExecutes</br>";
 		$authUrl = $client->createAuthUrl();
 	}
 	
 	//If authentication is complete perform action
 	if ($client->getAccessToken()) {
-		echo "I have been authenticated.Session EventID = ".$_SESSION['eventID'];
+		#echo "I have been authenticated.Session EventID = ".$_SESSION['eventID'];
 		#echo $_SESSION['eventID'];
 		
 		
@@ -199,7 +199,9 @@
 		
 		$calendarId = 'primary';
 		$event = $service->events->insert($calendarId, $event);
-		printf('Event created: %s\n', $event->htmlLink);
+		
+		#printf('Event created: %s\n', $event->htmlLink);
+		echo "Event created".$event->htmlLink;
 		
 	}
 	
