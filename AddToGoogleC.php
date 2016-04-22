@@ -154,7 +154,7 @@
 		
 		$title       		= 		$eventArray['Title'];
 		$Place       		= 		$eventArray['Place'];
-		$description      = 		$eventArray['Description'];
+		$description      = 		'Event Name:'."\n".$eventArray['Description']."\n".'Description:'."\n".$eventArray['Description'];
 		$startDate 			= 		$eventArray['startDate'];
 		$startTime			= 		$eventArray['startTime'];
 		$EndDate       	= 		$eventArray['EndDate'];
