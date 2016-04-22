@@ -171,7 +171,7 @@
 	
 		$val = $startDate."T".$startTime."Z";
 		$startD = new DateTime($val);
-		$startD = date_format($startD, 'Y-m-d\TH:i:s');
+		#$startD = date_format($startD, 'Y-m-d\TH:i:s');
 		#$startD2 = new DateTime($startD);
 		
 		#var_dump(date_format($startD, "Y-m-d\TH:i:sP" ));
@@ -181,16 +181,14 @@
 		echo "</br>";
 		echo "</br>";
 		#echo date_format($startD, 'Y-m-d\TH:i:sP');
-		
-		date_default_timezone_set('America/New_York');
-		
+				
 		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
-		date_format($endD, "Y-m-d\TH:i:s");
+		#echo date_format($endD, "Y-m-d\TH:i:s");
 		
 		#date_format($date, 'Y-m-d H:i:s');
 		
-		var_dump($endD);
+		#var_dump($endD);
 		echo "</br>";
 		#echo date_format($endD, 'Y-m-d\TH:i:sP');
 		
@@ -210,19 +208,19 @@
 			  'summary' 		=> $title,
 			  'location' 		=> $Place,
 			  'description' 	=> $description,
-			  'start'			=> $startD,
-			  'end'				=>	$endD,
+			  #'start'			=> $startD,
+			  #'end'				=>	$endD,
 			  
-			  // 'start' => array(
-				 // 'dateTime' => $startD,
-				 // #'timeZone' => 'America/New_York',
-				 // 'timeZone' => $startD,
-			  // ),
-			  // 'end' => array(
-				 // 'dateTime' => $endD,
-				 // #'timeZone' => 'America/New_York',
-				 // 'timeZone' => $endD,
-			  // ),
+			   'start' => array(
+				 #'dateTime' => $startD,
+				 'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
+				 'timeZone' => "America/New_York",
+			  ),
+			  'end' => array(
+				 #'dateTime' => $endD,
+				 'dateTime' => date_format($endD, "Y-m-d\TH:i:s"),
+				 'timeZone' => "America/New_York",
+			  ),
 			  'reminders' => array(
 					'useDefault' => FALSE,
 					'overrides' => array(
