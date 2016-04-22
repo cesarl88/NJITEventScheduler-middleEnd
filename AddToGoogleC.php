@@ -175,7 +175,7 @@
 	echo "</br>SESSION";
 	print_r ($_SESSION);
 	
-	
+	echo "</br></br></br></br>WE NEED TO GET THE SESSION TO CAPTURE EVENTID ONCE THE REQUEST IS MADE";
 	
 ?>
 
