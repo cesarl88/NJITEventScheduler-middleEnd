@@ -206,7 +206,7 @@
 				 #'timeZone' => 'America/New_York',
 			  ),
 			  'end' => array(
-				 'dateTime' => $EndD,
+				 'dateTime' => $endD,
 				 #'timeZone' => 'America/New_York',
 			  ),
 			  'reminders' => array(
