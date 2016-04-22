@@ -204,10 +204,12 @@
 			  'start' => array(
 				 'dateTime' => $startD,
 				 #'timeZone' => 'America/New_York',
+				 'timeZone' => $startD,
 			  ),
 			  'end' => array(
 				 'dateTime' => $endD,
 				 #'timeZone' => 'America/New_York',
+				 'timeZone' => $endD,
 			  ),
 			  'reminders' => array(
 					'useDefault' => FALSE,
