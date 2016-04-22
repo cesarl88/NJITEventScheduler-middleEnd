@@ -171,6 +171,7 @@
 	
 		$val = $startDate."T".$startTime."Z";
 		$startD = new DateTime($val);
+		date_format($startD, "Y-m-d\TH:i:sP" );
 		
 		var_dump($startD);
 		echo "</br>";
@@ -178,6 +179,7 @@
 		
 		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
+		date_format($endD, "Y-m-d\TH:i:sP");
 		
 		#date_format($date, 'Y-m-d H:i:s');
 		
