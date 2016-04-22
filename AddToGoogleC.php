@@ -90,7 +90,15 @@
 		
 		
 		$eventID = '33454';
-		#$event = $_SESSION['eventID'];
+		#$eventID = $_SESSION['eventID'];
+		
+		
+		#TO-DO
+		#Check on DB whether the user has already added it to GoogleCal
+		
+		
+		
+		
 		
 		#call Function to get Event details
 		$eventDetails = getEventByID($eventID);
@@ -131,10 +139,7 @@
 			  'summary' 		=> $title,
 			  'location' 		=> $Place,
 			  'description' 	=> $description,
-			  #'start'			=> $startD,
-			  #'end'				=>	$endD,
-			  
-			   'start' => array(
+			  'start' => array(
 				 'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
 				 'timeZone' => "America/New_York",
 			  ),
