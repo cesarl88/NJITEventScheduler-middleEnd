@@ -3,8 +3,8 @@
 	session_start();
 	date_default_timezone_set('America/New_York');
 
-	#ini_set('display_errors', 'On');
-	#error_reporting(E_ALL);	
+	ini_set('display_errors', 'On');
+	error_reporting(E_ALL);	
 
 	
 	#print_r(get_defined_vars());
@@ -216,16 +216,16 @@
 				 ),
 			  ),
 		));
-		echo "</br></br></br>";
-		var_dump($event);
+		#echo "</br></br></br>";
+		#var_dump($event);
 		
 		$calendarId = 'primary';
 		$event = $service->events->insert($calendarId, $event);
 		
 		#printf('Event created: %s\n', $event->htmlLink);
-		#echo "Event created".$event->htmlLink;
-		echo "</br></br></br>";
-		var_dump($event);
+		echo "Event created".$event['htmlLink'];
+		#echo "</br></br></br>";
+		#var_dump($event);
 	}
 	
 	#print_r(get_defined_vars());
