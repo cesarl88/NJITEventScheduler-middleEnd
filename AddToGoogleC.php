@@ -143,9 +143,12 @@
 		
 		#call Function to get Event details
 		$eventDetails = getEventByID($event);
-		var_dump($eventDetails);
+		#var_dump($eventDetails);
 		
 		$eventArray = json_decode($eventDetails,true);
+		var_dump($eventArray);
+		
+		
 		
 		$title       		= 		$eventArray['Title'];
 		$Place       		= 		$eventArray['Place'];
