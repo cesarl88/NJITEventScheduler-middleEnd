@@ -224,6 +224,7 @@
 		
 		#printf('Event created: %s\n', $event->htmlLink);
 		#echo "Event created".$event->htmlLink;
+		echo "</br></br></br>";
 		var_dump($event);
 	}
 	
