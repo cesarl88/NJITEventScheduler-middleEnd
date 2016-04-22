@@ -1,7 +1,8 @@
 <?php
 	
 	session_start();
-	
+	date_default_timezone_set('America/New_York');
+
 	ini_set('display_errors', 'On');
 	error_reporting(E_ALL);	
 
@@ -168,13 +169,13 @@
 		
 		
 	
-		$val = $startDate."T".$startTime."Z";
+		$val = $startDate."T".$startTime;
 		$startD = new DateTime($val);
 		
 		var_dump($startD);
 		
 		
-		$val2 = $EndDate."T".$endTime."Z";
+		$val2 = $EndDate."T".$endTime;
 		$endD = new DateTime($val2);
 		
 		var_dump($endD);
