@@ -147,7 +147,7 @@
 		
 		$eventArray = json_decode($eventDetails,true);
 		$eventArray = $eventArray['Event'];
-		var_dump($eventArray);
+		#var_dump($eventArray);
 		
 		
 		
@@ -160,16 +160,19 @@
 		$endTime       	= 		$eventArray['endTime'];
 		$addToGoogle		= 		$eventArray['addToGoogle'];
 		
-		var_dump($startDate);
-		var_dump($startTime);
-		var_dump($EndDate);  
-		var_dump($endTime);  
+		#var_dump($startDate);
+		#var_dump($startTime);
+		#var_dump($EndDate);  
+		#var_dump($endTime);  
 		
 		#calll function to format Dates
-		#$startD 	=	formatDate($startDate,$startTime);
-		#$endD		=	formatDate($EndDate, $endTime);
+		$startD 	=	formatDate($startDate,$startTime);
+		$endD		=	formatDate($EndDate, $endTime);
 		
-		
+		echo "</br>";
+		var_dump($startD);
+		echo "</br>";
+		var_dump($endD);
 		
 		#$event = new Google_Service_Calendar_Event(
 		#	array(
