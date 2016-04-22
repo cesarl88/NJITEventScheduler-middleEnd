@@ -173,12 +173,17 @@
 		$startD = new DateTime($val);
 		
 		var_dump($startD);
-		
+		echo "</br>";
+		echo date_format($startD['date'], 'Y-m-d\TH:i:sP');
 		
 		$val2 = $EndDate."T".$endTime;
 		$endD = new DateTime($val2);
 		
+		date_format($date, 'Y-m-d H:i:s');
+		
 		var_dump($endD);
+		echo "</br>";
+		echo date_format($endD['date'], 'Y-m-d\TH:i:sP');
 		
 		
 		
@@ -186,10 +191,10 @@
 		#$startD 	=	formatDate($startDate,$startTime);
 		#$endD		=	formatDate($EndDate, $endTime);
 		
-		echo "</br>";
-		var_dump($startD);
-		echo "</br>";
-		var_dump($endD);
+		#echo "</br>";
+		#var_dump($startD);
+		#echo "</br>";
+		#var_dump($endD);
 		
 		$event = new Google_Service_Calendar_Event(
 			array(
