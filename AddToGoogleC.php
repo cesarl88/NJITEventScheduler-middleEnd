@@ -174,7 +174,7 @@
 		
 		var_dump($startD);
 		echo "</br>";
-		echo date_format($startD, 'Y-m-d\TH:i:sP');
+		#echo date_format($startD, 'Y-m-d\TH:i:sP');
 		
 		$val2 = $EndDate."T".$endTime."Z";
 		$endD = new DateTime($val2);
@@ -183,7 +183,7 @@
 		
 		var_dump($endD);
 		echo "</br>";
-		echo date_format($endD, 'Y-m-d\TH:i:sP');
+		#echo date_format($endD, 'Y-m-d\TH:i:sP');
 		
 		
 		
@@ -201,16 +201,19 @@
 			  'summary' 		=> $title,
 			  'location' 		=> $Place,
 			  'description' 	=> $description,
-			  'start' => array(
-				 'dateTime' => $startD,
-				 #'timeZone' => 'America/New_York',
-				 'timeZone' => $startD,
-			  ),
-			  'end' => array(
-				 'dateTime' => $endD,
-				 #'timeZone' => 'America/New_York',
-				 'timeZone' => $endD,
-			  ),
+			  'start'			=> $startD,
+			  'end'				=>	$endD,
+			  
+			  // 'start' => array(
+				 // 'dateTime' => $startD,
+				 // #'timeZone' => 'America/New_York',
+				 // 'timeZone' => $startD,
+			  // ),
+			  // 'end' => array(
+				 // 'dateTime' => $endD,
+				 // #'timeZone' => 'America/New_York',
+				 // 'timeZone' => $endD,
+			  // ),
 			  'reminders' => array(
 					'useDefault' => FALSE,
 					'overrides' => array(
