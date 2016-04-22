@@ -138,7 +138,7 @@
 		#echo $_SESSION['eventID'];
 		
 		
-		$event = 33624;
+		$event = '33441';
 		#$event = $_SESSION['eventID'];
 		
 		#call Function to get Event details
