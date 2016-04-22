@@ -165,9 +165,25 @@
 		#var_dump($EndDate);  
 		#var_dump($endTime);  
 		
+		
+		
+	
+		$val = $startDate."T".$startTime."Z";
+		$startD = new DateTime($val);
+		
+		var_dump($startD);
+		
+		
+		$val2 = $EndDate."T".$endTime."Z";
+		$endD = new DateTime($val2);
+		
+		var_dump($endD);
+		
+		
+		
 		#calll function to format Dates
-		$startD 	=	formatDate($startDate,$startTime);
-		$endD		=	formatDate($EndDate, $endTime);
+		#$startD 	=	formatDate($startDate,$startTime);
+		#$endD		=	formatDate($EndDate, $endTime);
 		
 		echo "</br>";
 		var_dump($startD);
