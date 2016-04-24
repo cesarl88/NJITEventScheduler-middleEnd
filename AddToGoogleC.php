@@ -124,11 +124,10 @@
 		$enventInGC = IsInGoogleCalendar($UserID,$eventID);
 		var_dump($enventInGC);
 		
-		if($enventInGC == "1"){
+		if($enventInGC == 1){
 			echo "Event already added to User Google Calendar";
-		
 		}
-		else{
+		elseif($enventInGC == -1){
 			#call Function to get Event details
 			$eventDetails = getEventByID($eventID);
 			
@@ -187,8 +186,8 @@
 			#var_dump($event);
 			
 			$calendarId = 'primary';
-			$event = $service->events->insert($calendarId, $event);
 			$addedToGCal = addToGoogle($UserID,$eventID);
+			$event = $service->events->insert($calendarId, $event);
 			#printf('Event created: %s\n', $event->htmlLink);
 			var_dump ($addedToGCal);
 			echo "<a href=".$event['htmlLink'].">Event created</a>";
@@ -198,6 +197,9 @@
 			
 			
 			
+		}
+		else{
+			echo "Something went wrong. Try again!";
 		}
 		
 		
