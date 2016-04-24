@@ -122,7 +122,7 @@
 		
 		
 		$enventInGC = IsInGoogleCalendar($UserID,$eventID);
-		var_dump($enventInGC);
+		#var_dump($enventInGC);
 		$enventInGC = json_decode($enventInGC,true);
 		
 		if($enventInGC['Result'] == 1){
@@ -191,12 +191,9 @@
 			$event = $service->events->insert($calendarId, $event);
 			#printf('Event created: %s\n', $event->htmlLink);
 			var_dump ($addedToGCal);
-			echo "<a href=".$event['htmlLink'].">Event created</a>";
+			echo "<a href=".$event['htmlLink'].">Event added!!!</a>";
 			#echo "</br></br></br>";
 			#var_dump($event);
-			
-			
-			
 			
 		}
 		else{
