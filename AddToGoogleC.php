@@ -191,7 +191,7 @@
 			$addedToGCal = addToGoogle($UserID,$eventID);
 			$event = $service->events->insert($calendarId, $event);
 			#printf('Event created: %s\n', $event->htmlLink);
-			var_dump ($addedToGCal);
+			#var_dump ($addedToGCal);
 			echo "<a href=".$event['htmlLink'].">Event added!!!</a>";
 			#echo "</br></br></br>";
 			#var_dump($event);
