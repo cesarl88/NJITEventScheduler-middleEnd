@@ -124,10 +124,10 @@
 		$enventInGC = IsInGoogleCalendar($UserID,$eventID);
 		var_dump($enventInGC);
 		
-		#if($enventInGC == "1"){
-		#	echo "Event already added to User Google Calendar";
-		#
-		#}
+		if($enventInGC == "1"){
+			echo "Event already added to User Google Calendar";
+		
+		}
 		#else{
 		#	#call Function to get Event details
 		#	$eventDetails = getEventByID($eventID);
