@@ -39,6 +39,46 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
+	#Define variables
+	function addToGoogle(){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/addToGoogle.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		return $getEventReply;	#review reply from DB
+		
+	}
+	
+	
+	function IsInGoogleCalendar(){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/IsInGoogleCalendar.php"); 
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$getEventReply = curl_exec($ch);
+		curl_close($ch);
+		return $getEventReply;	#review reply from DB
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	if(isset($_POST['ID'])){
 		$var = $_POST['ID'];
@@ -89,9 +129,8 @@
 		#echo $_SESSION['eventID'];
 		
 		
-		$eventID = '33454';
-		#$eventID = $_SESSION['eventID'];
-		
+		#$eventID = '33454';
+		$eventID = $_SESSION['eventID'];
 		
 		#TO-DO
 		#Check on DB whether the user has already added it to GoogleCal
