@@ -128,77 +128,77 @@
 			echo "Event already added to User Google Calendar";
 		
 		}
-		#else{
-		#	#call Function to get Event details
-		#	$eventDetails = getEventByID($eventID);
-		#	
-		#	$eventArray = json_decode($eventDetails,true);
-		#	$eventArray = $eventArray['Event'];
-		#	
-		#	$title       		= 		$eventArray['Title'];
-		#	$Place       		= 		$eventArray['Place'];
-		#	$description      = 		'Event Name:'."\n\t".$eventArray['EventName']."\n".
-		#									'Description:'."\n\t".$eventArray['Description']."\n".
-		#									'link:'."\n\t".$eventArray['link']."\n".
-		#									'Organization:'."\n\t".$eventArray['Organization']."\n".
-		#									'Submitter:'."\n\t".$eventArray['Submitter'];
-		#	$startDate 			= 		$eventArray['startDate'];
-		#	$startTime			= 		$eventArray['startTime'];
-		#	$EndDate       	= 		$eventArray['EndDate'];
-		#	$endTime       	= 		$eventArray['endTime'];
-		#	$addToGoogle		= 		$eventArray['addToGoogle'];
-		#	
-		#	
-		#	#Create date objects
-		#	$val = $startDate."T".$startTime."Z";
-		#	$startD = new DateTime($val);
-		#	
-		#			
-		#	$val2 = $EndDate."T".$endTime."Z";
-		#	$endD = new DateTime($val2);
-		#	
-		#	
-		#	#echo "</br>";
-		#	#var_dump($startD);
-		#	#echo "</br>";
-		#	#var_dump($endD);
-		#	
-		#	$event = new Google_Service_Calendar_Event(
-		#		array(
-		#		'summary' 		=> $title,
-		#		'location' 		=> $Place,
-		#		'description' 	=> $description,
-		#		'start' => array(
-		#			'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
-		#			'timeZone' => "America/New_York",
-		#		),
-		#		'end' => array(
-		#			'dateTime' => date_format($endD, "Y-m-d\TH:i:s"),
-		#			'timeZone' => "America/New_York",
-		#		),
-		#		'reminders' => array(
-		#				'useDefault' => FALSE,
-		#				'overrides' => array(
-		#						array('method' => 'email', 'minutes' => 24 * 60),
-		#			),
-		#		),
-		#	));
-		#	#echo "</br></br></br>";
-		#	#var_dump($event);
-		#	
-		#	$calendarId = 'primary';
-		#	$event = $service->events->insert($calendarId, $event);
-		#	$addedToGCal = addToGoogle($UserID,$eventID);
-		#	#printf('Event created: %s\n', $event->htmlLink);
-		#	var_dump ($addedToGCal);
-		#	echo "<a href=".$event['htmlLink'].">Event created</a>";
-		#	#echo "</br></br></br>";
-		#	#var_dump($event);
-		#	
-		#	
-		#	
-		#	
-		#}
+		else{
+			#call Function to get Event details
+			$eventDetails = getEventByID($eventID);
+			
+			$eventArray = json_decode($eventDetails,true);
+			$eventArray = $eventArray['Event'];
+			
+			$title       		= 		$eventArray['Title'];
+			$Place       		= 		$eventArray['Place'];
+			$description      = 		'Event Name:'."\n\t".$eventArray['EventName']."\n".
+											'Description:'."\n\t".$eventArray['Description']."\n".
+											'link:'."\n\t".$eventArray['link']."\n".
+											'Organization:'."\n\t".$eventArray['Organization']."\n".
+											'Submitter:'."\n\t".$eventArray['Submitter'];
+			$startDate 			= 		$eventArray['startDate'];
+			$startTime			= 		$eventArray['startTime'];
+			$EndDate       	= 		$eventArray['EndDate'];
+			$endTime       	= 		$eventArray['endTime'];
+			$addToGoogle		= 		$eventArray['addToGoogle'];
+			
+			
+			#Create date objects
+			$val = $startDate."T".$startTime."Z";
+			$startD = new DateTime($val);
+			
+					
+			$val2 = $EndDate."T".$endTime."Z";
+			$endD = new DateTime($val2);
+			
+			
+			#echo "</br>";
+			#var_dump($startD);
+			#echo "</br>";
+			#var_dump($endD);
+			
+			$event = new Google_Service_Calendar_Event(
+				array(
+				'summary' 		=> $title,
+				'location' 		=> $Place,
+				'description' 	=> $description,
+				'start' => array(
+					'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
+					'timeZone' => "America/New_York",
+				),
+				'end' => array(
+					'dateTime' => date_format($endD, "Y-m-d\TH:i:s"),
+					'timeZone' => "America/New_York",
+				),
+				'reminders' => array(
+						'useDefault' => FALSE,
+						'overrides' => array(
+								array('method' => 'email', 'minutes' => 24 * 60),
+					),
+				),
+			));
+			#echo "</br></br></br>";
+			#var_dump($event);
+			
+			$calendarId = 'primary';
+			$event = $service->events->insert($calendarId, $event);
+			$addedToGCal = addToGoogle($UserID,$eventID);
+			#printf('Event created: %s\n', $event->htmlLink);
+			var_dump ($addedToGCal);
+			echo "<a href=".$event['htmlLink'].">Event created</a>";
+			#echo "</br></br></br>";
+			#var_dump($event);
+			
+			
+			
+			
+		}
 		
 		
 	}
