@@ -126,9 +126,7 @@
 		$enventInGC = json_decode($enventInGC,true);
 		
 		if($enventInGC['Result'] == 1){
-			echo "Event already added to User Google Calendar";
-			
-			echo "<a href=https://www.google.com/calendar>Event added!!!</a>";
+			echo "<a href=https://www.google.com/calendar>Event already added to User Google Calendar</a>";
 			
 		}
 		elseif($enventInGC['Result'] == -1){
