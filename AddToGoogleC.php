@@ -127,6 +127,9 @@
 		
 		if($enventInGC['Result'] == 1){
 			echo "Event already added to User Google Calendar";
+			
+			echo "<a href=https://www.google.com/calendar>Event added!!!</a>";
+			
 		}
 		elseif($enventInGC['Result'] == -1){
 			#call Function to get Event details
