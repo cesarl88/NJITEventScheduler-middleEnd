@@ -10,12 +10,12 @@
 	#print_r(get_defined_vars());
 	
 	
-	echo "Begin</br>GET";
-	print_r ($_GET);
-	echo "</br>POST";
-	print_r ($_POST);
-	echo "</br>SESSION";
-	print_r ($_SESSION);
+	#echo "Begin</br>GET";
+	#print_r ($_GET);
+	#echo "</br>POST";
+	#print_r ($_POST);
+	#echo "</br>SESSION";
+	#print_r ($_SESSION);
 	
 	
 	//Dependency for Composer
@@ -39,11 +39,15 @@
 		return $getEventReply;	#review reply from DB	
 	}
 	
+	
+	$UserID = $_POST['UserID'];
+	$EventID = $_POST['EventID'];
+  
 	#Define variables
-	function addToGoogle(){
+	function addToGoogle($UserID,$eventID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/addToGoogle.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID."&EventID=".$eventID);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
@@ -52,49 +56,30 @@
 	}
 	
 	
-	function IsInGoogleCalendar(){
+	function IsInGoogleCalendar($UserID,$eventID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://web.njit.edu/~cls33/CS490/IsInGoogleCalendar.php"); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, "ID=".$ID);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, "UserID=".$UserID."&EventID=".$eventID);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		$getEventReply = curl_exec($ch);
 		curl_close($ch);
 		return $getEventReply;	#review reply from DB
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	if(isset($_POST['ID'])){
 		$var = $_POST['ID'];
-		#var_dump ($var);
-		#echo "</br>";
 		$_SESSION['eventID']	=	$_POST['ID'];
-		#echo "SessionEventID".$_SESSION['eventID'];
-	}
-	elseif(isset($_SESSION['eventID'])){
-		#echo "SessionEventID is working";
 	}
 	
-	else{
-		#echo "AfterInitialPost".$_SESSION['eventID'];
-		#echo "</br>";
-	}
+	// if(eventID){
+		
+	// }
+	
+	// if(UserID){
+		
+	// }
+	
 	
 	$client = new Google_Client();
 	$client->setScopes(SCOPES);
@@ -130,91 +115,101 @@
 		
 		
 		#$eventID = '33454';
-		$eventID = $_SESSION['eventID'];
-		
+		$eventID 	= $_SESSION['eventID'];
+		$UserID		= $_SESSION['UserID'];
 		#TO-DO
 		#Check on DB whether the user has already added it to GoogleCal
 		
 		
+		if(IsInGoogleCalendar($UserID,$eventID) == 1){
+			echo "Event already added to User Google Calendar";
+		
+		}
+		else{
+			#call Function to get Event details
+			$eventDetails = getEventByID($eventID);
+			
+			$eventArray = json_decode($eventDetails,true);
+			$eventArray = $eventArray['Event'];
+			
+			$title       		= 		$eventArray['Title'];
+			$Place       		= 		$eventArray['Place'];
+			$description      = 		'Event Name:'."\n\t".$eventArray['EventName']."\n".
+											'Description:'."\n\t".$eventArray['Description']."\n".
+											'link:'."\n\t".$eventArray['link']."\n".
+											'Organization:'."\n\t".$eventArray['Organization']."\n".
+											'Submitter:'."\n\t".$eventArray['Submitter'];
+			$startDate 			= 		$eventArray['startDate'];
+			$startTime			= 		$eventArray['startTime'];
+			$EndDate       	= 		$eventArray['EndDate'];
+			$endTime       	= 		$eventArray['endTime'];
+			$addToGoogle		= 		$eventArray['addToGoogle'];
+			
+			
+			#Create date objects
+			$val = $startDate."T".$startTime."Z";
+			$startD = new DateTime($val);
+			
+					
+			$val2 = $EndDate."T".$endTime."Z";
+			$endD = new DateTime($val2);
+			
+			
+			#echo "</br>";
+			#var_dump($startD);
+			#echo "</br>";
+			#var_dump($endD);
+			
+			$event = new Google_Service_Calendar_Event(
+				array(
+				'summary' 		=> $title,
+				'location' 		=> $Place,
+				'description' 	=> $description,
+				'start' => array(
+					'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
+					'timeZone' => "America/New_York",
+				),
+				'end' => array(
+					'dateTime' => date_format($endD, "Y-m-d\TH:i:s"),
+					'timeZone' => "America/New_York",
+				),
+				'reminders' => array(
+						'useDefault' => FALSE,
+						'overrides' => array(
+								array('method' => 'email', 'minutes' => 24 * 60),
+					),
+				),
+			));
+			#echo "</br></br></br>";
+			#var_dump($event);
+			
+			$calendarId = 'primary';
+			$event = $service->events->insert($calendarId, $event);
+			$addedToGCal = addToGoogle($UserID,$eventID);
+			#printf('Event created: %s\n', $event->htmlLink);
+			var_dump ($addedToGCal);
+			echo "<a href=".$event['htmlLink'].">Event created</a>";
+			#echo "</br></br></br>";
+			#var_dump($event);
+			
+			
+			
+			
+		}
 		
 		
-		
-		#call Function to get Event details
-		$eventDetails = getEventByID($eventID);
-		
-		$eventArray = json_decode($eventDetails,true);
-		$eventArray = $eventArray['Event'];
-		
-		$title       		= 		$eventArray['Title'];
-		$Place       		= 		$eventArray['Place'];
-		$description      = 		'Event Name:'."\n\t".$eventArray['EventName']."\n".
-										'Description:'."\n\t".$eventArray['Description']."\n".
-										'link:'."\n\t".$eventArray['link']."\n".
-										'Organization:'."\n\t".$eventArray['Organization']."\n".
-										'Submitter:'."\n\t".$eventArray['Submitter'];
-		$startDate 			= 		$eventArray['startDate'];
-		$startTime			= 		$eventArray['startTime'];
-		$EndDate       	= 		$eventArray['EndDate'];
-		$endTime       	= 		$eventArray['endTime'];
-		$addToGoogle		= 		$eventArray['addToGoogle'];
-		
-		
-		#Create date objects
-		$val = $startDate."T".$startTime."Z";
-		$startD = new DateTime($val);
-		
-				
-		$val2 = $EndDate."T".$endTime."Z";
-		$endD = new DateTime($val2);
-		
-		
-		#echo "</br>";
-		#var_dump($startD);
-		#echo "</br>";
-		#var_dump($endD);
-		
-		$event = new Google_Service_Calendar_Event(
-			array(
-			  'summary' 		=> $title,
-			  'location' 		=> $Place,
-			  'description' 	=> $description,
-			  'start' => array(
-				 'dateTime' => date_format($startD, "Y-m-d\TH:i:s"),
-				 'timeZone' => "America/New_York",
-			  ),
-			  'end' => array(
-				 'dateTime' => date_format($endD, "Y-m-d\TH:i:s"),
-				 'timeZone' => "America/New_York",
-			  ),
-			  'reminders' => array(
-					'useDefault' => FALSE,
-					'overrides' => array(
-							array('method' => 'email', 'minutes' => 24 * 60),
-				 ),
-			  ),
-		));
-		#echo "</br></br></br>";
-		#var_dump($event);
-		
-		$calendarId = 'primary';
-		$event = $service->events->insert($calendarId, $event);
-		
-		#printf('Event created: %s\n', $event->htmlLink);
-		echo "<a href=".$event['htmlLink'].">Event created</a>";
-		#echo "</br></br></br>";
-		#var_dump($event);
 	}
 	
 	#print_r(get_defined_vars());
 	
-	echo "End</br>GET";
-	print_r ($_GET);
-	echo "</br>POST";
-	print_r ($_POST);
-	echo "</br>SESSION";
-	print_r ($_SESSION);
+	#echo "End</br>GET";
+	#print_r ($_GET);
+	#echo "</br>POST";
+	#print_r ($_POST);
+	#echo "</br>SESSION";
+	#print_r ($_SESSION);
 	
-	echo "</br></br></br></br>WE NEED TO GET THE SESSION TO CAPTURE EVENTID ONCE THE REQUEST IS MADE";
+	#echo "</br></br></br></br>WE NEED TO GET THE SESSION TO CAPTURE EVENTID ONCE THE REQUEST IS MADE";
 	
 ?>
 
@@ -222,7 +217,7 @@
 <div class="request">
 <?php 
 if (isset($authUrl)) {
-  echo "</br><a class='login' href='" . $authUrl . "'>Connect Me!</a>";
+  echo "</br><a class='login' href='" . $authUrl . "'>Login to Google!</a>";
 }
 ?>
   </div>
